@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
+    "dev:fullstack": "tinacms dev -c 'astro dev --port 8080'",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
@@ -14,9 +15,12 @@
   "license": "ISC",
   "dependencies": {
     "@astrojs/vercel": "^6.1.2",
-    "astro": "^4.0.9"
+    "astro": "^4.0.9",
+    "tinacms": "^1.5.28"
   },
   "devDependencies": {
+    "@tinacms/cli": "^1.5.39",
+    "@types/node": "^20.10.6",
     "@typescript-eslint/parser": "^6.17.0",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.0",
