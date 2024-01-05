@@ -15,8 +15,12 @@
   "license": "ISC",
   "dependencies": {
     "@astrojs/vercel": "^6.1.2",
-    "astro": "^4.0.9",
-    "tinacms": "^1.5.28"
+    "@tinacms/datalayer": "^1.2.32",
+    "@upstash/redis": "^1.28.0",
+    "astro": "^4.1.0",
+    "tinacms": "^1.5.28",
+    "tinacms-gitprovider-github": "^1.0.3",
+    "upstash-redis-level": "^1.1.1"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.39",

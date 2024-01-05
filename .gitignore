@@ -1,3 +1,6 @@
+# MacOS specific
+.DS_Store
+
 # NPM specific
 node_modules
 
