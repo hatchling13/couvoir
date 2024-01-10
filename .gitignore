@@ -6,4 +6,7 @@ node_modules
 
 # VS Code settings
 .vscode
+
+# environment variables
 .env
+.env.local
