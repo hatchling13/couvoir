@@ -1,5 +1,12 @@
+# MacOS specific
+.DS_Store
+
 # NPM specific
 node_modules
 
 # VS Code settings
 .vscode
+
+# environment variables
+.env
+.env.local
