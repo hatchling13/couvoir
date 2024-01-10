@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "astro dev",
     "dev:fullstack": "tinacms dev -c 'astro dev --port 8080'",
     "start": "astro dev",
@@ -23,6 +24,8 @@
     "upstash-redis-level": "^1.1.1"
   },
   "devDependencies": {
+    "@pandacss/astro": "^0.25.0",
+    "@pandacss/dev": "^0.26.1",
     "@tinacms/cli": "^1.5.39",
     "@types/node": "^20.10.6",
     "@typescript-eslint/parser": "^6.17.0",

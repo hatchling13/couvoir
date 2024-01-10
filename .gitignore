@@ -10,3 +10,7 @@ node_modules
 # environment variables
 .env
 .env.local
+
+## Panda
+styled-system
+styled-system-studio
