@@ -1,6 +1,7 @@
 import { defineConfig, LocalAuthProvider } from 'tinacms';
 
 export default defineConfig({
+  contentApiUrlOverride: '/api/tina/gql',
   authProvider: new LocalAuthProvider(),
   build: {
     outputFolder: 'admin',
