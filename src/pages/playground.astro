@@ -1,0 +1,23 @@
+---
+import '../index.css';
+import { css } from '../../styled-system/css';
+
+const bodyStyles = css({
+  height: 'full',
+  minW: 'xs',
+  backgroundColor: 'primary',
+  fontFamily: 'pretendard',
+});
+---
+
+<html lang="ko" class={css({ height: 'full' })}>
+  <head>
+    <title>playground = f(ui)(cs)(more)</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="description" content="나만의 웹 놀이터" />
+  </head>
+  <body class={bodyStyles}> </body>
+</html>

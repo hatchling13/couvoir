@@ -1,0 +1,44 @@
+---
+import '../index.css';
+import { css } from '../../styled-system/css';
+
+const styles = css({
+  color: 'indigo.900',
+  fontFamily: 'serif',
+  fontSize: '2xl',
+  fontStyle: 'italic',
+});
+
+const anchorStyles = css({
+  transition: 'all',
+  transitionTimingFunction: 'ease-in-out',
+  color: {
+    base: 'indigo.900',
+    _hover: 'indigo.500',
+    _focus: 'indigo.500',
+    _active: 'indigo.300',
+  },
+  fontSize: {
+    base: '2xl',
+    _hover: '3xl',
+    _focus: '3xl',
+    _active: '3xl',
+  },
+  textDecoration: {
+    base: 'none',
+    _hover: 'underline',
+    _focus: 'underline',
+    _active: 'underline',
+  },
+});
+---
+
+<nav class={styles}>
+  <a href="/" class={anchorStyles}>Couvoir</a> = f<a
+    href="/playground"
+    class={anchorStyles}>(playground)</a
+  ><a href="/blog" class={anchorStyles}>(blog)</a><a
+    href="/me"
+    class={anchorStyles}>(me)</a
+  >
+</nav>

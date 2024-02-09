@@ -1,0 +1,7 @@
+@layer reset, base, tokens, recipes, utilities;
+
+@import url(./fonts/Pretendard/pretendardvariable.css);
+
+:root {
+  --font-pretendard: 'Pretendard Variable';
+}

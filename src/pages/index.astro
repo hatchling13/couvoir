@@ -1,14 +1,43 @@
 ---
-import { css } from "../../styled-system/css";
+import '../index.css';
+import { css } from '../../styled-system/css';
+
+import Navigation from '../components/Navigation.astro';
+
+const bodyStyles = css({
+  height: 'full',
+  minW: 'xs',
+  bgColor: 'indigo.900',
+  display: 'flex',
+  flexDir: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontFamily: 'pretendard',
+});
+
+const containerStyles = css({
+  w: '4/5',
+  h: '3/4',
+  bgColor: 'amber.50',
+  rounded: 'xl',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
 ---
 
-<html lang="ko" class={css({ height: '100%' })}>
+<html lang="ko" class={css({ height: 'full' })}>
   <head>
-    <title>Couvoir - 생각이 태어나는 곳</title>
+    <title>couvoir = f(playground)(web)(me)</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta charset="utf8" />
-    <meta property="description" content="나만의 웹 놀이터" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="description" content="기발한 사용자 인터페이스를 위해" />
   </head>
-  <body>
-    <h1 class={css({ fontSize: '8xl' })}>다람쥐 헌 쳇바퀴 위에 타고파</h1>
+  <body class={bodyStyles}>
+    <main class={containerStyles}>
+      <Navigation />
+    </main>
   </body>
 </html>

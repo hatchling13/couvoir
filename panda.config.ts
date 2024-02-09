@@ -17,7 +17,9 @@ export default defineConfig({
   theme: {
     extend: {
       tokens: {
-        fonts: {},
+        fonts: {
+          pretendard: { value: 'var(--font-pretendard)' },
+        },
       },
     },
   },
