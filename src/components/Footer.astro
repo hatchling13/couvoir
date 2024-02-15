@@ -1,0 +1,15 @@
+---
+import '../index.css';
+import { css } from '../../styled-system/css';
+
+const footerStyles = css({
+  paddingBlock: '2',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+---
+
+<footer class={footerStyles}>
+  <p>Powered by <a href="https://astro.build">Astro</a>.</p>
+</footer>

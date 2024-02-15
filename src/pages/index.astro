@@ -3,26 +3,24 @@ import '../index.css';
 import { css } from '../../styled-system/css';
 
 import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 
 const bodyStyles = css({
   height: 'full',
-  minW: 'xs',
-  bgColor: 'indigo.900',
+  fontFamily: 'pretendard',
   display: 'flex',
   flexDir: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  fontFamily: 'pretendard',
 });
 
-const containerStyles = css({
-  w: '4/5',
-  h: '3/4',
-  bgColor: 'amber.50',
-  rounded: 'xl',
+const mainStyles = css({
+  flexGrow: '1',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+});
+
+const spanStyle = css({
+  fontSize: '4xl',
 });
 ---
 
@@ -36,8 +34,12 @@ const containerStyles = css({
     <meta property="description" content="기발한 사용자 인터페이스를 위해" />
   </head>
   <body class={bodyStyles}>
-    <main class={containerStyles}>
-      <Navigation />
+    <Navigation />
+    <main class={mainStyles}>
+      <span class={spanStyle}>
+        🚧 공사중입니다! 더 나은 모습으로 찾아뵐게요! 🚧
+      </span>
     </main>
+    <Footer />
   </body>
 </html>

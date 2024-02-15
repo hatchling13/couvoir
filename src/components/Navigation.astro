@@ -3,26 +3,34 @@ import '../index.css';
 import { css } from '../../styled-system/css';
 
 const styles = css({
-  color: 'indigo.900',
+  height: '16',
+  color: 'amber.800',
   fontFamily: 'serif',
-  fontSize: '2xl',
+  fontSize: { base: 'lg', sm: 'xl', md: '2xl', lg: '3xl' },
   fontStyle: 'italic',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+const spanStyles = css({
+  paddingInline: { base: '1', sm: '1', md: '2', lg: '2' },
 });
 
 const anchorStyles = css({
   transition: 'all',
   transitionTimingFunction: 'ease-in-out',
   color: {
-    base: 'indigo.900',
-    _hover: 'indigo.500',
-    _focus: 'indigo.500',
-    _active: 'indigo.300',
+    base: 'amber.800',
+    _hover: 'amber.600',
+    _focus: 'amber.600',
+    _active: 'amber.600',
   },
   fontSize: {
-    base: '2xl',
-    _hover: '3xl',
-    _focus: '3xl',
-    _active: '3xl',
+    base: { base: 'lg', sm: 'xl', md: '2xl', lg: '3xl' },
+    _hover: { base: 'xl', sm: '2xl', md: '3xl', lg: '4xl' },
+    _focus: { base: 'xl', sm: '2xl', md: '3xl', lg: '4xl' },
+    _active: { base: 'xl', sm: '2xl', md: '3xl', lg: '4xl' },
   },
   textDecoration: {
     base: 'none',
@@ -34,11 +42,9 @@ const anchorStyles = css({
 ---
 
 <nav class={styles}>
-  <a href="/" class={anchorStyles}>Couvoir</a> = f<a
-    href="/playground"
-    class={anchorStyles}>(playground)</a
-  ><a href="/blog" class={anchorStyles}>(blog)</a><a
-    href="/me"
-    class={anchorStyles}>(me)</a
-  >
+  <a href="/" class={anchorStyles}>Couvoir</a><span class={spanStyles}>=</span
+  >f<a href="/playground" class={anchorStyles}>(playground)</a><a
+    href="/blog"
+    class={anchorStyles}>(blog)</a
+  ><a href="/me" class={anchorStyles}>(me)</a>
 </nav>

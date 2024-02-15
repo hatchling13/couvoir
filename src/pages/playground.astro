@@ -2,11 +2,25 @@
 import '../index.css';
 import { css } from '../../styled-system/css';
 
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
 const bodyStyles = css({
   height: 'full',
-  minW: 'xs',
-  backgroundColor: 'primary',
   fontFamily: 'pretendard',
+  display: 'flex',
+  flexDir: 'column',
+});
+
+const mainStyles = css({
+  flexGrow: '1',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+const spanStyle = css({
+  fontSize: '4xl',
 });
 ---
 
@@ -19,5 +33,13 @@ const bodyStyles = css({
     <meta name="generator" content={Astro.generator} />
     <meta property="description" content="나만의 웹 놀이터" />
   </head>
-  <body class={bodyStyles}> </body>
+  <body class={bodyStyles}>
+    <Navigation />
+    <main class={mainStyles}>
+      <span class={spanStyle}>
+        🚧 공사중입니다! 더 나은 모습으로 찾아뵐게요! 🚧
+      </span>
+    </main>
+    <Footer />
+  </body>
 </html>
