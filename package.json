@@ -5,7 +5,6 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "astro dev",
-    "dev:fullstack": "tinacms dev -c 'astro dev --port 8080'",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
@@ -14,13 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/vercel": "^7.3.0",
-    "astro": "^4.3.5"
+    "@astrojs/vercel": "^7.3.1",
+    "astro": "^4.4.1"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.30.2",
-    "@types/node": "^20.11.17",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@pandacss/dev": "^0.32.0",
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/parser": "^7.0.2",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.4",
     "eslint-plugin-jsx-a11y": "^6.8.0",
