@@ -6,10 +6,8 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
 const bodyStyles = css({
-  height: 'full',
+  color: 'main',
   fontFamily: 'pretendard',
-  display: 'flex',
-  flexDir: 'column',
 });
 
 const mainStyles = css({
@@ -17,20 +15,6 @@ const mainStyles = css({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-});
-
-const divStyles = css({
-  paddingInline: '4',
-  fontSize: '4xl',
-  display: 'flex',
-  flexDir: 'column',
-  gap: '4',
-  alignItems: 'center',
-});
-
-const spanStyle = css({
-  wordBreak: 'keep-all',
-  textAlign: 'center',
 });
 ---
 
@@ -44,15 +28,8 @@ const spanStyle = css({
     <meta property="description" content="기발한 사용자 인터페이스를 위해" />
   </head>
   <body class={bodyStyles}>
-    <Navigation />
     <main class={mainStyles}>
-      <div class={divStyles}>
-        <span>🚧</span>
-        <span class={spanStyle}>
-          공사중입니다! 더 나은 모습으로 찾아뵐게요!
-        </span>
-        <span>🚧</span>
-      </div>
+      <Navigation />
     </main>
     <Footer />
   </body>

@@ -3,13 +3,33 @@ import '../index.css';
 import { css } from '../../styled-system/css';
 
 const footerStyles = css({
+  color: 'etainSnowGray',
+  fontSize: { base: 'md', sm: 'md', md: 'lg', lg: 'xl' },
   paddingBlock: '2',
   display: 'flex',
+  flexDir: 'column',
   justifyContent: 'center',
   alignItems: 'center',
+});
+
+const anchorStyles = css({
+  textDecoration: {
+    base: 'none',
+    _hover: 'underline',
+    _focus: 'underline',
+    _active: 'underline',
+  },
 });
 ---
 
 <footer class={footerStyles}>
-  <p>Powered by <a href="https://astro.build">Astro</a>.</p>
+  <p>
+    Powered by <a class={anchorStyles} href="https://astro.build">Astro</a>.
+  </p>
+  <p>
+    Special thanks to <a
+      class={anchorStyles}
+      href="https://lute.fantazm.net/dye">지염도서관</a
+    >!
+  </p>
 </footer>

@@ -1,4 +1,10 @@
-import { defineConfig } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles } from '@pandacss/dev';
+
+const globalCss = defineGlobalStyles({
+  body: {
+    backgroundColor: 'siamBlack',
+  },
+});
 
 export default defineConfig({
   // Whether to use css reset
@@ -17,6 +23,10 @@ export default defineConfig({
   theme: {
     extend: {
       tokens: {
+        colors: {
+          siamBlack: { value: '#020715' },
+          etainSnowGray: { value: '#DADDE4' },
+        },
         fonts: {
           pretendard: { value: 'var(--font-pretendard)' },
         },
@@ -26,4 +36,6 @@ export default defineConfig({
 
   // The output directory for your css system
   outdir: 'styled-system',
+
+  globalCss,
 });
