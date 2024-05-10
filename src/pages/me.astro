@@ -2,35 +2,50 @@
 import '../index.css';
 import { css } from '../../styled-system/css';
 
+import IconLabel from '../components/IconLabel.astro';
+
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
 const bodyStyles = css({
-  height: 'full',
+  color: 'etainSnowGray',
   fontFamily: 'pretendard',
   display: 'flex',
   flexDir: 'column',
 });
 
 const mainStyles = css({
-  flexGrow: '1',
+  marginY: '8',
+  alignSelf: 'center',
   display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
 });
 
-const divStyles = css({
-  paddingInline: '4',
-  fontSize: '4xl',
+const headerStyles = css({
+  bg: 'white',
+  w: 'full',
+  mx: '4',
+  p: '8',
+  rounded: 'md',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'start',
+  gap: { base: '6', sm: '12', md: '24', lg: '48', xl: '96' },
+  flexWrap: 'wrap',
+
+  '& h1': {
+    color: 'eochaidNavy',
+    fontSize: '4xl',
+    fontWeight: 'bold',
+  },
+  '& p': {
+    color: 'siamBlack',
+    fontSize: '2xl',
+  },
+});
+
+const contactsStyles = css({
   display: 'flex',
   flexDir: 'column',
-  gap: '4',
-  alignItems: 'center',
-});
-
-const spanStyle = css({
-  wordBreak: 'keep-all',
-  textAlign: 'center',
 });
 ---
 
@@ -46,13 +61,29 @@ const spanStyle = css({
   <body class={bodyStyles}>
     <Navigation />
     <main class={mainStyles}>
-      <div class={divStyles}>
-        <span>🚧</span>
-        <span class={spanStyle}>
-          공사중입니다! 더 나은 모습으로 찾아뵐게요!
-        </span>
-        <span>🚧</span>
-      </div>
+      <header class={headerStyles}>
+        <section aria-label="introduction">
+          <h1>박정욱</h1>
+          <p>소프트웨어 엔지니어</p>
+        </section>
+        <section class={contactsStyles} aria-label="contacts">
+          <IconLabel
+            name="feather:mail"
+            label="email"
+            content="me@hatchling.dev"
+          />
+          <IconLabel
+            name="feather:github"
+            label="GitHub"
+            content="hatchling13"
+          />
+          <IconLabel
+            name="feather:twitter"
+            label="Twitter(X)"
+            content="@hatchling_13"
+          />
+        </section>
+      </header>
     </main>
     <Footer />
   </body>

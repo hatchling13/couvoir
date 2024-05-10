@@ -1,0 +1,28 @@
+---
+import '../index.css';
+import { css } from '../../styled-system/css';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  name: string;
+  href?: string;
+  label: string;
+  content: string;
+}
+
+const { name, href, label, content } = Astro.props;
+
+const Wrapper = href ? 'a' : 'p';
+
+const styles = css({
+  fontSize: 'xl',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '2',
+});
+---
+
+<Wrapper class={styles}>
+  <Icon name={name} role="img" aria-label={label} />
+  <span>{content}</span>
+</Wrapper>

@@ -26,6 +26,7 @@ export default defineConfig({
         colors: {
           siamBlack: { value: '#020715' },
           etainSnowGray: { value: '#DADDE4' },
+          eochaidNavy: { value: '#091742' },
         },
         fonts: {
           pretendard: { value: 'var(--font-pretendard)' },
