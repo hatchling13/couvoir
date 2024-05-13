@@ -5,9 +5,23 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "weekly"
-      time: "09:00"
-      timezone: "Asia/Seoul"
+      interval: 'weekly'
+      time: '09:00'
+      timezone: 'Asia/Seoul'
+    groups:
+      astro:
+        patterns:
+          - astro
+          - astro-icon
+          - '@astrojs/*'
+      eslint:
+        patterns:
+          - eslint
+          - eslint-plugin-*
+      prettier:
+        patterns:
+          - prettier
+          - prettier-plugin-*
