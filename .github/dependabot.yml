@@ -17,11 +17,9 @@ updates:
           - astro
           - astro-icon
           - '@astrojs/*'
-      eslint:
-        patterns:
-          - eslint
-          - eslint-plugin-*
       prettier:
         patterns:
           - prettier
           - prettier-plugin-*
+    ignore:
+      - dependency-name: 'eslint*'
