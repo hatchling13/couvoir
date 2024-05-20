@@ -1,6 +1,6 @@
 ---
-import '../index.css';
-import { css } from '../../styled-system/css';
+import '@src/index.css';
+import { css } from '@styled-system/css';
 
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
@@ -13,6 +13,7 @@ const bodyStyles = css({
 });
 
 const mainStyles = css({
+  color: 'etainSnowGray',
   flexGrow: '1',
   display: 'flex',
   justifyContent: 'center',

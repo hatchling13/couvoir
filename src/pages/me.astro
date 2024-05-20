@@ -1,11 +1,11 @@
 ---
-import '../index.css';
-import { css } from '../../styled-system/css';
-
-import IconLabel from '../components/IconLabel.astro';
+import '@src/index.css';
+import { css } from '@styled-system/css';
 
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import Contacts from '../components/me/Contacts.astro';
+import Introduction from '@src/components/me/Introduction.astro';
 
 const bodyStyles = css({
   color: 'etainSnowGray',
@@ -31,21 +31,6 @@ const headerStyles = css({
   alignItems: 'start',
   gap: { base: '6', sm: '12', md: '24', lg: '48', xl: '96' },
   flexWrap: 'wrap',
-
-  '& h1': {
-    color: 'eochaidNavy',
-    fontSize: '4xl',
-    fontWeight: 'bold',
-  },
-  '& p': {
-    color: 'siamBlack',
-    fontSize: '2xl',
-  },
-});
-
-const contactsStyles = css({
-  display: 'flex',
-  flexDir: 'column',
 });
 ---
 
@@ -62,27 +47,8 @@ const contactsStyles = css({
     <Navigation />
     <main class={mainStyles}>
       <header class={headerStyles}>
-        <section aria-label="introduction">
-          <h1>박정욱</h1>
-          <p>소프트웨어 엔지니어</p>
-        </section>
-        <section class={contactsStyles} aria-label="contacts">
-          <IconLabel
-            name="feather:mail"
-            label="email"
-            content="me@hatchling.dev"
-          />
-          <IconLabel
-            name="feather:github"
-            label="GitHub"
-            content="hatchling13"
-          />
-          <IconLabel
-            name="feather:twitter"
-            label="Twitter(X)"
-            content="@hatchling_13"
-          />
-        </section>
+        <Introduction />
+        <Contacts />
       </header>
     </main>
     <Footer />

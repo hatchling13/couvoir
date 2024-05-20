@@ -1,0 +1,35 @@
+---
+import { css } from '@styled-system/css';
+
+import IconLink from '../IconLink.astro';
+
+const styles = css({
+  display: 'flex',
+  flexDir: 'column',
+});
+
+const links = [
+  {
+    name: 'feather:mail',
+    href: 'mailto:me@hatchling.dev',
+    label: 'email',
+    content: 'me@hatchling.dev',
+  },
+  {
+    name: 'feather:github',
+    href: 'https://github.com/hatchling13',
+    label: 'GitHub',
+    content: 'hatchling13',
+  },
+  {
+    name: 'feather:twitter',
+    href: 'https://twitter.com/hatchling_13',
+    label: 'Twitter(X)',
+    content: '@hatchling_13',
+  },
+];
+---
+
+<section class={styles} aria-label="contacts">
+  {links.map((link) => <IconLink {...link} />)}
+</section>

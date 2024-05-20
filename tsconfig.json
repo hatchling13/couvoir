@@ -1,4 +1,11 @@
 {
   "extends": "astro/tsconfigs/strictest",
-  "include": ["src", "styled-system"]
+  "include": ["src", "styled-system"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@styled-system/*": ["styled-system/*"]
+    }
+  }
 }

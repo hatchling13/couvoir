@@ -1,28 +1,31 @@
 ---
-import '../index.css';
-import { css } from '../../styled-system/css';
+import { css } from '@styled-system/css';
 import { Icon } from 'astro-icon/components';
 
 interface Props {
   name: string;
-  href?: string;
+  href: string;
   label: string;
   content: string;
 }
 
 const { name, href, label, content } = Astro.props;
 
-const Wrapper = href ? 'a' : 'p';
-
 const styles = css({
-  fontSize: 'xl',
+  color: 'siamBlack',
+  fontSize: '2xl',
   display: 'flex',
   alignItems: 'center',
+  alignSelf: 'flex-start',
   gap: '2',
+
+  '&:hover': {
+    textDecoration: 'underline',
+  },
 });
 ---
 
-<Wrapper class={styles}>
+<a href={href} class={styles} target="_blank" rel="noopener noreferrer">
   <Icon name={name} role="img" aria-label={label} />
   <span>{content}</span>
-</Wrapper>
+</a>
