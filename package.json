@@ -20,7 +20,7 @@
     "astro-icon": "^1.1.0"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.40.1",
+    "@pandacss/dev": "^0.41.0",
     "@types/node": "^20.14.2",
     "@typescript-eslint/parser": "^7.13.0",
     "eslint": "^8.57.0",
