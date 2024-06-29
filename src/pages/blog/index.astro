@@ -9,13 +9,11 @@ import Footer from '../../components/Footer.astro';
 
 const bodyStyles = css({
   height: 'full',
-  fontFamily: 'pretendard',
   display: 'flex',
   flexDir: 'column',
 });
 
 const mainStyles = css({
-  color: 'etainSnowGray',
   flexGrow: '1',
   display: 'flex',
   justifyContent: 'center',
@@ -48,7 +46,7 @@ const postListStyles = css({
 const allBlogPosts = await getCollection('blog');
 ---
 
-<html lang="ko" class={css({ height: 'full' })}>
+<html lang="ko">
   <head>
     <title>blog = f(retrospects)(thoughts)(rss)</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

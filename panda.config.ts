@@ -1,7 +1,12 @@
 import { defineConfig, defineGlobalStyles } from '@pandacss/dev';
 
 const globalCss = defineGlobalStyles({
+  html: {
+    height: 'full',
+  },
   body: {
+    fontFamily: 'pretendard',
+    color: 'etainSnowGray',
     backgroundColor: 'siamBlack',
   },
 });
