@@ -13,6 +13,9 @@ node_modules
 # Astro
 .astro
 
+# Vercel
+.vercel
+
 ## Panda
 styled-system
 styled-system-studio
