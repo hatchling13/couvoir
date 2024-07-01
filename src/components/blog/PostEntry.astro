@@ -1,0 +1,58 @@
+---
+import '@src/index.css';
+import { css } from '@styled-system/css';
+
+const listStyles = css({
+  padding: '4',
+  display: 'flex',
+  flexDir: 'column',
+});
+
+const anchorStyles = css({
+  width: 'fit-content',
+  fontSize: '2xl',
+  fontWeight: 'bold',
+
+  textDecoration: {
+    base: 'none',
+    _hover: 'underline',
+    _focus: 'underline',
+    _active: 'underline',
+  },
+});
+
+const descriptionStyles = css({
+  fontSize: 'xl',
+});
+
+const dateStyles = css({
+  fontSize: 'lg',
+  paddingBlockStart: '2',
+  alignSelf: 'flex-end',
+});
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  type: 'post' | 'retrospect';
+  slug: string;
+}
+
+const { title, description, date, type, slug } = Astro.props;
+
+const magicalNumber = 60;
+const descriptionText =
+  description.length >= magicalNumber
+    ? `${description.slice(0, magicalNumber).trim()}...`
+    : description;
+
+const formatter = new Intl.DateTimeFormat('ko-KR');
+const formattedDate = formatter.format(date);
+---
+
+<li class={listStyles}>
+  <a class={anchorStyles} href={`/blog/${type}/${slug}`}>{title}</a>
+  <p class={descriptionStyles}>{descriptionText}</p>
+  <p class={dateStyles}>{formattedDate}</p>
+</li>

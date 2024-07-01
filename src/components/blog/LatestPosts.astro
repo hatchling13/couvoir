@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+
+import '@src/index.css';
+import { css } from '@styled-system/css';
+
+import ListEntry from '@src/components/blog/PostEntry.astro';
+
+const sectionStyles = css({
+  borderWidth: '1',
+  borderStyle: 'solid',
+  borderColor: 'etainSnowGray',
+  borderRadius: 'sm',
+
+  padding: '4',
+  display: 'flex',
+  flexDir: 'column',
+  gap: '4',
+});
+
+const divStyles = css({
+  paddingInline: '4',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignContent: 'center',
+});
+
+const headingStyles = css({
+  fontWeight: 'bolder',
+  fontSize: '4xl',
+
+  alignSelf: 'center',
+});
+
+const listStyles = css({
+  minW: '1/2',
+
+  display: 'flex',
+  flexDir: 'column',
+  divideY: '1px',
+});
+
+const anchorStyles = css({
+  fontWeight: 'medium',
+  fontSize: 'xl',
+
+  textDecoration: {
+    base: 'none',
+    _hover: 'underline',
+    _focus: 'underline',
+    _active: 'underline',
+  },
+
+  alignSelf: 'center',
+});
+
+interface Props {
+  label: string;
+  type: 'post' | 'retrospect';
+}
+
+const { label, type } = Astro.props;
+
+const posts = await getCollection(type);
+
+const latest = posts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 4);
+
+const latestData = latest.map(
+  ({ slug, data: { title, description, date } }) => ({
+    title,
+    description,
+    date,
+    slug,
+  }),
+);
+---
+
+<section class={sectionStyles}>
+  <div class={divStyles}>
+    <h2 class={headingStyles}>{label}</h2>
+    <a href=`/blog/${type}` class={anchorStyles}>더보기</a>
+  </div>
+  <ol class={listStyles}>
+    {latestData.map((data) => <ListEntry type={type} {...data} />)}
+  </ol>
+</section>

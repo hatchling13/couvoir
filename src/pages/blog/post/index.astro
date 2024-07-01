@@ -1,11 +1,10 @@
 ---
 import '@src/index.css';
 
-import { bodyStyles, mainStyles, divStyles } from './styles';
+import { bodyStyles, mainStyles, divStyles } from '../styles';
 
-import Navigation from '../../components/Navigation.astro';
-import Footer from '../../components/Footer.astro';
-import LatestPosts from '@src/components/blog/LatestPosts.astro';
+import Navigation from '@src/components/Navigation.astro';
+import Footer from '@src/components/Footer.astro';
 ---
 
 <html lang="ko">
@@ -20,10 +19,7 @@ import LatestPosts from '@src/components/blog/LatestPosts.astro';
   <body class={bodyStyles}>
     <Navigation />
     <main class={mainStyles}>
-      <div class={divStyles}>
-        <LatestPosts label="게시글" type="post" />
-        <LatestPosts label="회고" type="retrospect" />
-      </div>
+      <div class={divStyles}>글글글글글</div>
     </main>
     <Footer />
   </body>

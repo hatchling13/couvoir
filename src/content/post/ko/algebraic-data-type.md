@@ -1,14 +1,14 @@
 ---
-title: 대수적 자료형(Algebraic Data Type)
+date: "2023-07-16"
 description: 함수형 프로그래밍 알아보기 1탄
-date: 2023-07-16
 taxonomies:
   categories:
-    - blog
+  - blog
   tags:
-    - Algebraic Data Type
-    - Category Theory
-    - Functional Programming
+  - Algebraic Data Type
+  - Category Theory
+  - Functional Programming
+title: 대수적 자료형(Algebraic Data Type)
 ---
 
 # 대수적 자료형(Algebraic Data Type)
@@ -29,7 +29,7 @@ taxonomies:
 
 # ‘대수적’ 자료형?
 
-범주론은 추상대수학의 일부인 만큼, 단번에 이해하기에는 무리가 있다. 그럼에도 불구하고 거칠게나마 범주론을 짚고 넘어가야 하는 이유는 우리가 다뤄야 할 주제가 ‘대수적’ 자료형이기 때문이다.
+범주론은 추상대수학의 일부인 만큼, 단번에 이해하기에는 무리가 있다. 그럼에도 불구하고 거칠게나마 범주론을 짚고 넘어가야 하는 이유는 우리가 다뤄야 할 주제가 ‘대수적’ 자료형이기 때문이다. 
 
 ‘대수적’이라는 말은 무슨 의미일까? 추상대수학은 ‘대수적 구조’(Algebraic Structure)를 다루는 분야이다. 우리는 아무런 의문 없이 아주 자연스럽게 사칙연산을 이용하여 수를 다루곤 한다. 그 뿐인가? “1 + 1은 어째서 2인가?” 따위의 질문을 던지는 사람들을 다소 이상한 눈으로 바라보곤 한다. 물론 사탕 하나를 가지고 있는 아이에게 사탕 하나를 더 주면 아이는 사탕을 두 개 가지게 될 것이다. 그러나 그런 ‘경험적’인 방식이 아니라, ‘실수 1’을 ‘실수 1’과 덧셈한 결과를 2가 `될 수 있도록` 하는 이론적 토대를 제공하기 위해 수학자들은 대수학을 발전시켜왔다. 그리고 이러한 연구가 더 진전되어감에 따라, ‘수’ 이외의 수학적 대상에 대수적 구조를 적용하여 각 분야의 문제들을 대수학적인 시각으로 바라볼 수 있게 되었다. 결국 ‘대수적’ 자료형이라는 용어의 참된 의미는 원래 ‘수’로 생각할 수 없었던 ‘형’(Type, 이하 타입)이라는 ‘범주’의 대상에 대수적 구조를 적용하여, 대수학에서 문제를 다루는 방식으로 타입에 대한 문제를 해결해보자는 뜻으로 이해할 수 있다. 어떻게 이것이 가능한가? 바로 범주론이 있기 때문이다.
 
@@ -55,11 +55,11 @@ taxonomies:
 
 항등원의 경우 이 글에서 별도로 설명하지는 않고, 편의를 위해 Scala의 자료형인 `Nothing`과 `Unit`을 빌려 이야기하겠다. `Nothing`이란 어떠한 값도 원소로 가질 수 없는, 집합의 관점에서 보았을 때 공집합을 나타내는 타입이며, `Unit`이란 단일 값이자 아무런 정보가 없는 `()`라는 값만을 원소로 가질 수 있는 집합이다. 거두절미하자면 `Nothing`은 합 타입의(혹은 쌍대곱의) 항등원이고, `Unit`은 곱 타입의(혹은 곱의) 항등원이다. 간단한 예시를 통해 타입 시스템이 반환과 동형이라는 것을 보이도록 하자.
 
-반환은 곱셈에 대해 결합법칙과 분배법칙의 성립, 0과의 곱이 0임을 만족해야 한다.
+반환은 곱셈에 대해 결합법칙과 분배법칙의 성립, 0과의 곱이 0임을 만족해야 한다. 
 
 1. 타입 (Int, (String, Int))와 타입 ((Int, String), Int)는 서로 같은 타입인가? 완벽히 동일한 타입은 아니다. 그러나 두 타입은 서로 같은 정보값을 표현할 수 있으며, 그 순서가 동일하다. 사상의 합성을 설명한 문단에서 괄호를 생략할 수 있음을 이미 설명한 바 있으므로, 둘은 완벽히 동일하지는 않지만 동형이므로 ‘같다고 치고’ 똑같은 방식으로 다룰 수 있다.
 2. 타입 (String, Boolean | Nothing)과 타입 (String, Boolean) | (String, Nothing)은 서로 같은 타입인가? 완벽히 동일한 타입은 아니다. 그러나 2번째 타입이 Boolean이면서 Nothing일 수는 없으므로, 각각의 경우에 대해 어떠한 결과가 나오는 지를 확인해보면 2번째 타입이 Boolean인 경우 (String, Boolean), Nothing인 경우 (String, Nothing)의 2가지가 나오며, 각 경우는 다른 하나를 절대 침범할 수 없다. 따라서 둘은 완벽히 동일하지는 않지만 동형이므로 ‘같다고 치고’ 똑같은 방식으로 다룰 수 있다.
-3. `Nothing`의 경우, 대수적 구조를 범주에 적용할 때 0처럼 사용할 수 있다. (String, Nothing)은 `Nothing`과 같은가? `Nothing`은 어떠한 값도 원소로 가질 수 없으며, 따라서 (String, Nothing) 형태의 어떠한 값을 만들려고 할 때 제공해줄 수 있는 값이 단 하나도 없다. 따라서 (String, Nothing)의 형태는 String에 어떤 값이 오든 관계없이 만들어질 수 없으며, 이 결과는 결국 `Nothing`과 같아진다. 따라서 a \* 0 = 0의 형태를 보존한다고 볼 수 있다.
+3. `Nothing`의 경우, 대수적 구조를 범주에 적용할 때 0처럼 사용할 수 있다. (String, Nothing)은 `Nothing`과 같은가? `Nothing`은 어떠한 값도 원소로 가질 수 없으며, 따라서 (String, Nothing) 형태의 어떠한 값을 만들려고 할 때 제공해줄 수 있는 값이 단 하나도 없다. 따라서 (String, Nothing)의 형태는 String에 어떤 값이 오든 관계없이 만들어질 수 없으며, 이 결과는 결국 `Nothing`과 같아진다. 따라서 a * 0 = 0의 형태를 보존한다고 볼 수 있다.
 
 반환은 덧셈에 대해 교환법칙과 결합법칙의 성립을 만족해야 한다.
 
@@ -85,7 +85,6 @@ taxonomies:
 5. 패턴 매칭은 타입 선언의 반대 방향으로 이루어지는 작업이며, (패턴 매칭, 타입 선언)의 관계는 마치 (곱, 쌍대곱)의 관계와 비슷하다.
 
 ## 관련 자료
-
 1. [Category Theory Lecture from Bartosz Milewski](https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_&index=1)
 2. [Category Theory for Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
 3. [Category Theory - Wikipedia](https://en.wikipedia.org/wiki/Category_theory) 외 다수 항목

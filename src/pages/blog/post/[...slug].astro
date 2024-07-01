@@ -10,9 +10,9 @@ import Footer from '@src/components/Footer.astro';
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const entries = await getCollection('post');
 
-  return blogEntries.map((entry) => ({
+  return entries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
