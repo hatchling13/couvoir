@@ -26,10 +26,11 @@ const mainStyles = css({
     lg: '16',
   },
   display: 'flex',
+  flexDir: 'column',
 });
 
 const contentStyles = css({
-  fontWeight: 'bold',
+  fontWeight: 'medium',
 
   '& h1': {
     paddingBlock: '2',
@@ -50,20 +51,41 @@ const contentStyles = css({
   '& p': {
     paddingBlock: '1',
   },
-  '& code': {},
 });
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const { title, date, description } = entry.data;
+
+const year = date.getFullYear();
+const month = date.getMonth() + 1;
+const day = date.getDate();
+
+const formattedDate = `${year}년 ${month}월 ${day}일`;
 ---
 
 <html>
   <head>
+    <title>{title}</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    />
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
   </head>
   <body>
     <Navigation />
     <main class={mainStyles}>
+      <section>
+        <h1>{title}</h1>
+        <p>{formattedDate}</p>
+      </section>
       <section class={contentStyles}>
         <Content />
       </section>
