@@ -24,7 +24,7 @@
     "sharp": "^0.33.4"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.41.0",
+    "@pandacss/dev": "^0.43.0",
     "@types/node": "^20.14.10",
     "@typescript-eslint/parser": "^7.16.0",
     "eslint": "^8.57.0",
