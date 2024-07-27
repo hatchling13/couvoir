@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+import { css } from '@styled-system/css';
+
+import type { CollectionEntry } from 'astro:content';
+
+const divStyles = css({
+  display: 'flex',
+  flexDir: 'column',
+});
+
+interface Props {
+  post: CollectionEntry<'post' | 'retrospect'>;
+}
+
+const { post } = Astro.props;
+
+const { title, description, date, taxonomies } = post.data;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class={divStyles}>
+    <h1>{title}</h1>
+    <p>{date.toLocaleDateString('ko-KR')}</p>
+    <slot />
+    <section>
+      {taxonomies.tags.join(', ')}
+    </section>
+  </div>
+</BaseLayout>

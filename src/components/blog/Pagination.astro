@@ -1,0 +1,56 @@
+---
+import { css } from '@styled-system/css';
+
+interface Props {
+  type: 'post' | 'retrospect';
+  currentPage: number;
+  count: number[];
+}
+
+const { type, currentPage, count } = Astro.props;
+
+const navStyles = css({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '4',
+});
+
+const spanStyles = css({
+  fontWeight: 'semibold',
+  px: '2',
+  py: '1',
+  fontSize: '2xl',
+  borderWidth: '1px',
+  borderRadius: 'sm',
+
+  _hover: {
+    cursor: 'default',
+  },
+});
+
+const anchorStyles = css({
+  fontSize: '2xl',
+  textDecoration: {
+    base: 'none',
+    _hover: 'underline',
+    _focus: 'underline',
+    _active: 'underline',
+  },
+});
+---
+
+<nav class={navStyles}>
+  {
+    count.map((num) =>
+      num === currentPage ? (
+        <span role="link" aria-disabled="true" class={spanStyles}>
+          {num}
+        </span>
+      ) : (
+        <a class={anchorStyles} href={`/blog/${type}/${num}`}>
+          {num}
+        </a>
+      ),
+    )
+  }
+</nav>

@@ -1,22 +1,9 @@
 ---
-import '@src/index.css';
 import { css } from '@styled-system/css';
 
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import Contacts from '../components/me/Contacts.astro';
+import Contacts from '@src/components/me/Contacts.astro';
 import Introduction from '@src/components/me/Introduction.astro';
-
-const bodyStyles = css({
-  display: 'flex',
-  flexDir: 'column',
-});
-
-const mainStyles = css({
-  marginY: '8',
-  alignSelf: 'center',
-  display: 'flex',
-});
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 const headerStyles = css({
   bg: 'white',
@@ -30,25 +17,14 @@ const headerStyles = css({
   gap: { base: '6', sm: '12', md: '24', lg: '48', xl: '96' },
   flexWrap: 'wrap',
 });
+
+const title = 'me = f(cv)';
+const description = 'Cogito, ergo sum - René Descartes';
 ---
 
-<html lang="ko">
-  <head>
-    <title>me = f(cv)</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta property="description" content="나는 누구인가" />
-  </head>
-  <body class={bodyStyles}>
-    <Navigation />
-    <main class={mainStyles}>
-      <header class={headerStyles}>
-        <Introduction />
-        <Contacts />
-      </header>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={title} description={description}>
+  <header class={headerStyles}>
+    <Introduction />
+    <Contacts />
+  </header>
+</BaseLayout>

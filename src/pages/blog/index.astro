@@ -1,30 +1,26 @@
 ---
-import '@src/index.css';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
-import { bodyStyles, mainStyles, divStyles } from './styles';
+import { css } from '@styled-system/css';
 
-import Navigation from '../../components/Navigation.astro';
-import Footer from '../../components/Footer.astro';
 import LatestPosts from '@src/components/blog/LatestPosts.astro';
+
+const divStyles = css({
+  w: 'full',
+  paddingInline: '8',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: '8',
+});
+
+const title = 'blog = f(retrospects)(posts)';
+const description =
+  'Memories are the key not to the past, but to the future - Cornelia Arnolda Johanna ten Boom';
 ---
 
-<html lang="ko">
-  <head>
-    <title>blog = f(retrospects)(thoughts)(rss)</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta property="description" content="여러 가지 흔적" />
-  </head>
-  <body class={bodyStyles}>
-    <Navigation />
-    <main class={mainStyles}>
-      <div class={divStyles}>
-        <LatestPosts label="게시글" type="post" />
-        <LatestPosts label="회고" type="retrospect" />
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={title} description={description}>
+  <div class={divStyles}>
+    <LatestPosts label="게시글" type="post" />
+    <LatestPosts label="회고" type="retrospect" />
+  </div>
+</BaseLayout>

@@ -1,22 +1,7 @@
 ---
-import '@src/index.css';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
 import { css } from '@styled-system/css';
-
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-
-const bodyStyles = css({
-  height: 'full',
-  display: 'flex',
-  flexDir: 'column',
-});
-
-const mainStyles = css({
-  flexGrow: '1',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
 
 const divStyles = css({
   paddingInline: '4',
@@ -31,28 +16,16 @@ const spanStyle = css({
   wordBreak: 'keep-all',
   textAlign: 'center',
 });
+
+const title = 'playground = f(ui)(cs)(more)';
+const description =
+  "Play is our brain's favorite way of learning - Diane Ackerman";
 ---
 
-<html lang="ko">
-  <head>
-    <title>playground = f(ui)(cs)(more)</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta property="description" content="나만의 웹 놀이터" />
-  </head>
-  <body class={bodyStyles}>
-    <Navigation />
-    <main class={mainStyles}>
-      <div class={divStyles}>
-        <span>🚧</span>
-        <span class={spanStyle}>
-          공사중입니다! 더 나은 모습으로 찾아뵐게요!
-        </span>
-        <span>🚧</span>
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={title} description={description}>
+  <div class={divStyles}>
+    <span>🚧</span>
+    <span class={spanStyle}> 공사중입니다! 더 나은 모습으로 찾아뵐게요! </span>
+    <span>🚧</span>
+  </div>
+</BaseLayout>

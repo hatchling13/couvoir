@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import '@src/index.css';
 import { css } from '@styled-system/css';
 
-import ListEntry from '@src/components/blog/PostEntry.astro';
+import PostEntry from '@src/components/blog/PostEntry.astro';
 
 const sectionStyles = css({
   borderWidth: '1',
@@ -80,9 +80,9 @@ const latestData = latest.map(
 <section class={sectionStyles}>
   <div class={divStyles}>
     <h2 class={headingStyles}>{label}</h2>
-    <a href=`/blog/${type}` class={anchorStyles}>더보기</a>
+    <a href=`/blog/${type}/1` class={anchorStyles}>더보기</a>
   </div>
   <ol class={listStyles}>
-    {latestData.map((data) => <ListEntry type={type} {...data} />)}
+    {latestData.map((data) => <PostEntry type={type} {...data} />)}
   </ol>
 </section>

@@ -1,0 +1,65 @@
+---
+export const prerender = true;
+
+import { range } from '@src/utils';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+import { css } from '@styled-system/css';
+
+import PostEntry from '@src/components/blog/PostEntry.astro';
+import Pagination from '@src/components/blog/Pagination.astro';
+
+import { getCollection } from 'astro:content';
+
+import type { GetStaticPathsOptions } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection('retrospect');
+  const sortedByTime = posts.toSorted(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+
+  return paginate(sortedByTime, { pageSize: 4 });
+}
+
+const divStyles = css({
+  h: '2xl',
+  padding: '4',
+  display: 'flex',
+  flexDir: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '4',
+});
+
+const ulStyles = css({
+  borderWidth: '1',
+  borderStyle: 'solid',
+  borderColor: 'etainSnowGray',
+  borderRadius: 'sm',
+});
+
+const { page } = Astro.props;
+
+const pageCount = range(1, page.size);
+
+const title = `current = f(${page.currentPage})`;
+const description = '둔한 붓이 총명한 머리를 이긴다 - 정약용';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class={divStyles}>
+    <ul class={ulStyles}>
+      {
+        page.data.map(({ slug, data }) => (
+          <PostEntry type="retrospect" slug={slug} {...data} />
+        ))
+      }
+    </ul>
+    <Pagination
+      type="retrospect"
+      currentPage={page.currentPage}
+      count={pageCount}
+    />
+  </div>
+</BaseLayout>
