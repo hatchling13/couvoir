@@ -82,7 +82,7 @@ title: 내가 생각하는 프론트엔드의 가치
 
 [^9]: Thomas T. Hewett, Ronald Baecker, Stuart Card, Tom Carey, Jean Gasen, Marilyn Mantei, Gary Perlman, Gary Strong, and William Verplank. 1992. ACM SIGCHI Curricula for Human-Computer Interaction. Technical Report. Association for Computing Machinery, New York, NY, USA. [#](https://dl.acm.org/doi/book/10.1145/2594128)
 
-[^10]: 1987. Apple Human Interface Guidelines: The Apple Desktop Interface. Addison-Wesley Longman Publishing Co., Inc., USA. [#](https://dl.acm.org/doi/10.5555/1207530)
+[^10]: Nov. 1987. Apple Human Interface Guidelines: The Apple Desktop Interface. Addison-Wesley Longman Publishing Co., Inc., USA. [#](https://dl.acm.org/doi/10.5555/1207530)
 
 [^11]: Don Norman, Contributor of Encyclopædia Britannica, Accessed 24 December 2022. [#](https://www.britannica.com/contributor/Don-Norman/12354118)
 
