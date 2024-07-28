@@ -5,8 +5,10 @@ import vercel from '@astrojs/vercel/serverless';
 import icon from 'astro-icon';
 
 import remarkMath from 'remark-math';
+
 import rehypeKatex from 'rehype-katex';
 import rehypeShiftHeading from 'rehype-shift-heading';
+
 import type { RehypePlugins, RemarkPlugins } from 'astro';
 
 const remarkPlugins: RemarkPlugins = [remarkMath];

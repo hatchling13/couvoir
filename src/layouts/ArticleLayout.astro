@@ -1,13 +1,101 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import '@src/styles/index.css';
 
 import { css } from '@styled-system/css';
+
+import { bodyStyles, mainStyles } from '@src/styles';
+
+import Navigation from '@src/components/Navigation.astro';
+import Footer from '@src/components/Footer.astro';
 
 import type { CollectionEntry } from 'astro:content';
 
 const divStyles = css({
+  minW: '0',
+  w: '8xl',
+  py: '4',
+  px: '8',
   display: 'flex',
   flexDir: 'column',
+});
+
+const headingStyle = css({
+  fontSize: { base: '3xl', md: '4xl', lg: '5xl' },
+  fontWeight: 'bold',
+  wordBreak: 'keep-all',
+});
+
+const dateStyle = css({
+  fontSize: '2xl',
+  fontWeight: 'semibold',
+});
+
+const tagStyle = css({
+  p: '2',
+  fontSize: 'lg',
+  fontWeight: 'medium',
+});
+
+const contentStyles = css({
+  fontWeight: 'semibold',
+
+  '& h2': {
+    paddingBlock: '2',
+    fontSize: {
+      base: '2xl',
+      md: '2xl',
+      lg: '4xl',
+    },
+  },
+  '& h3': {
+    paddingBlock: '2',
+    fontSize: {
+      base: 'xl',
+      md: 'xl',
+      lg: '3xl',
+    },
+  },
+  '& h4': {
+    paddingBlock: '2',
+    fontSize: {
+      base: 'lg',
+      md: 'lg',
+      lg: '2xl',
+    },
+  },
+
+  '& p': {
+    paddingBlock: '4',
+    fontSize: { base: 'md', md: 'md', lg: 'xl' },
+    lineHeight: 'relaxed',
+
+    '& code': {
+      px: '1',
+      py: '0.5',
+      rounded: 'sm',
+      bgColor: 'torvishDeepSea',
+      color: 'deepOrange',
+    },
+  },
+
+  '& ul': {
+    p: '4',
+    fontSize: { base: 'md', md: 'md', lg: 'xl' },
+    lineHeight: 'relaxed',
+    listStyleType: 'disc',
+  },
+
+  '& ol': {
+    p: '4',
+    fontSize: { base: 'md', md: 'md', lg: 'xl' },
+    lineHeight: 'relaxed',
+    listStyleType: 'decimal',
+  },
+
+  '& pre': {
+    p: '4',
+    rounded: 'md',
+  },
 });
 
 interface Props {
@@ -19,13 +107,35 @@ const { post } = Astro.props;
 const { title, description, date, taxonomies } = post.data;
 ---
 
-<BaseLayout title={title} description={description}>
-  <div class={divStyles}>
-    <h1>{title}</h1>
-    <p>{date.toLocaleDateString('ko-KR')}</p>
-    <slot />
-    <section>
-      {taxonomies.tags.join(', ')}
-    </section>
-  </div>
-</BaseLayout>
+<html lang="ko">
+  <head>
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+  </head>
+  <body class={bodyStyles}>
+    <Navigation />
+    <main class={mainStyles}>
+      <div class={divStyles}>
+        <h1 class={headingStyle}>{title}</h1>
+        <p class={dateStyle}>{date.toLocaleDateString('ko-KR')}</p>
+        <hr class={css({ my: '2' })} />
+        <section class={contentStyles}>
+          <slot />
+        </section>
+        <hr class={css({ my: '2' })} />
+        <ul class={tagStyle}>{taxonomies.tags.join(', ')}</ul>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

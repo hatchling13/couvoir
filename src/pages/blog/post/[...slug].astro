@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { css } from '@styled-system/css';
+
 import ArticleLayout from '@src/layouts/ArticleLayout.astro';
 
 export const prerender = true;
@@ -14,37 +14,10 @@ export async function getStaticPaths() {
   }));
 }
 
-const contentStyles = css({
-  fontWeight: 'bold',
-
-  '& h1': {
-    paddingBlock: '2',
-    fontSize: {
-      base: '2xl',
-      md: '2xl',
-      lg: '4xl',
-    },
-  },
-  '& h2': {
-    paddingBlock: '2',
-    fontSize: {
-      base: 'xl',
-      md: 'xl',
-      lg: '3xl',
-    },
-  },
-  '& p': {
-    paddingBlock: '1',
-  },
-  '& code': {},
-});
-
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
 <ArticleLayout post={entry}>
-  <section class={contentStyles}>
-    <Content />
-  </section>
+  <Content />
 </ArticleLayout>

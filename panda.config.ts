@@ -32,6 +32,8 @@ export default defineConfig({
           siamBlack: { value: '#020715' },
           etainSnowGray: { value: '#DADDE4' },
           eochaidNavy: { value: '#091742' },
+          torvishDeepSea: { value: '#3B3947' },
+          deepOrange: { value: '#FD731C' },
         },
         fonts: {
           pretendard: { value: 'var(--font-pretendard)' },
