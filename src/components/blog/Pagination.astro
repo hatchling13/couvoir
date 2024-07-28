@@ -1,15 +1,6 @@
 ---
+import { range } from '@src/utils';
 import { css } from '@styled-system/css';
-
-// 페이지 수 많아질 때 대비할 필요 있음
-
-interface Props {
-  type: 'post' | 'retrospect';
-  currentPage: number;
-  count: number[];
-}
-
-const { type, currentPage, count } = Astro.props;
 
 const navStyles = css({
   display: 'flex',
@@ -40,6 +31,19 @@ const anchorStyles = css({
     _active: 'underline',
   },
 });
+
+// 페이지 수 많아질 때 대비할 필요 있음
+
+interface Props {
+  type: 'post' | 'retrospect';
+  currentPage: number;
+  size: number;
+  total: number;
+}
+
+const { type, currentPage, size, total } = Astro.props;
+
+const count = range(1, Math.ceil(total / size));
 ---
 
 <nav class={navStyles}>

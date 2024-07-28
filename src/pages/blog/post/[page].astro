@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
 
-import { range } from '@src/utils';
 import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 import { css } from '@styled-system/css';
@@ -39,7 +38,7 @@ const sectionStyles = css({
   display: 'flex',
   flexDir: 'column',
   justifyContent: 'space-between',
-  gap: '8',
+  gap: '6',
 });
 
 const listStyles = css({
@@ -64,8 +63,6 @@ const paginatedData = page.data.map(
   }),
 );
 
-const pageCount = range(1, page.size);
-
 const title = `current = f(${page.currentPage})`;
 const description = '둔한 붓이 총명한 머리를 이긴다 - 정약용';
 ---
@@ -79,7 +76,8 @@ const description = '둔한 붓이 총명한 머리를 이긴다 - 정약용';
       <Pagination
         type="post"
         currentPage={page.currentPage}
-        count={pageCount}
+        size={page.size}
+        total={page.total}
       />
     </section>
   </div>

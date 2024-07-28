@@ -3,7 +3,7 @@ date: "2022-07-13"
 description: 학기 중에 모든 힘을 쏟아낸 나는 거짓말처럼 B0를 받았다
 taxonomies:
   categories:
-  - retrospect
+  - blog
   tags:
   - 회고
   - Android
