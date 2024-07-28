@@ -1,6 +1,8 @@
 ---
 import { css } from '@styled-system/css';
 
+// 페이지 수 많아질 때 대비할 필요 있음
+
 interface Props {
   type: 'post' | 'retrospect';
   currentPage: number;
@@ -11,6 +13,7 @@ const { type, currentPage, count } = Astro.props;
 
 const navStyles = css({
   display: 'flex',
+  alignSelf: 'center',
   alignItems: 'center',
   gap: '4',
 });

@@ -1,12 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 
-import '@src/index.css';
 import { css } from '@styled-system/css';
 
 import PostEntry from '@src/components/blog/PostEntry.astro';
 
 const sectionStyles = css({
+  minW: '0',
+  w: '2xl',
+
   borderWidth: '1',
   borderStyle: 'solid',
   borderColor: 'etainSnowGray',
@@ -28,15 +30,14 @@ const divStyles = css({
 const headingStyles = css({
   fontWeight: 'bolder',
   fontSize: '4xl',
-
   alignSelf: 'center',
 });
 
 const listStyles = css({
-  minW: '1/2',
-
   display: 'flex',
+  flex: '1',
   flexDir: 'column',
+  justifyContent: 'center',
   divideY: '1px',
 });
 

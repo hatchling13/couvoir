@@ -23,16 +23,30 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 
 const divStyles = css({
-  h: '2xl',
+  w: 'full',
+  h: 'full',
+  p: '8',
+  display: 'flex',
+  justifyContent: 'center',
+  gap: '8',
+});
+
+const sectionStyles = css({
+  minW: '0',
+  w: '8xl',
+
   padding: '4',
   display: 'flex',
   flexDir: 'column',
   justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '4',
+  gap: '8',
 });
 
-const ulStyles = css({
+const listStyles = css({
+  display: 'flex',
+  flexDir: 'column',
+  divideY: '1px',
+
   borderWidth: '1',
   borderStyle: 'solid',
   borderColor: 'etainSnowGray',
@@ -40,6 +54,15 @@ const ulStyles = css({
 });
 
 const { page } = Astro.props;
+
+const paginatedData = page.data.map(
+  ({ slug, data: { title, description, date } }) => ({
+    title,
+    description,
+    date,
+    slug,
+  }),
+);
 
 const pageCount = range(1, page.size);
 
@@ -49,17 +72,15 @@ const description = '둔한 붓이 총명한 머리를 이긴다 - 정약용';
 
 <BaseLayout title={title} description={description}>
   <div class={divStyles}>
-    <ul class={ulStyles}>
-      {
-        page.data.map(({ slug, data }) => (
-          <PostEntry type="retrospect" slug={slug} {...data} />
-        ))
-      }
-    </ul>
-    <Pagination
-      type="retrospect"
-      currentPage={page.currentPage}
-      count={pageCount}
-    />
+    <section class={sectionStyles}>
+      <ul class={listStyles}>
+        {paginatedData.map((data) => <PostEntry type="retrospect" {...data} />)}
+      </ul>
+      <Pagination
+        type="retrospect"
+        currentPage={page.currentPage}
+        count={pageCount}
+      />
+    </section>
   </div>
 </BaseLayout>

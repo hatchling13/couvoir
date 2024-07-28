@@ -1,5 +1,4 @@
 ---
-import '@src/index.css';
 import { css } from '@styled-system/css';
 
 const listStyles = css({
@@ -9,7 +8,6 @@ const listStyles = css({
 });
 
 const anchorStyles = css({
-  width: 'fit-content',
   fontSize: '2xl',
   fontWeight: 'bold',
 
@@ -28,6 +26,11 @@ const anchorStyles = css({
 
 const descriptionStyles = css({
   fontSize: 'xl',
+
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  wordBreak: 'break-all',
 });
 
 const dateStyles = css({
@@ -46,18 +49,12 @@ interface Props {
 
 const { title, description, date, type, slug } = Astro.props;
 
-const magicalNumber = 60;
-const descriptionText =
-  description.length >= magicalNumber
-    ? `${description.slice(0, magicalNumber).trim()}...`
-    : description;
-
 const formatter = new Intl.DateTimeFormat('ko-KR');
 const formattedDate = formatter.format(date);
 ---
 
 <li class={listStyles}>
   <a class={anchorStyles} href={`/blog/${type}/${slug}`}>{title}</a>
-  <p class={descriptionStyles}>{descriptionText}</p>
+  <p class={descriptionStyles}>{description}</p>
   <p class={dateStyles}>{formattedDate}</p>
 </li>
