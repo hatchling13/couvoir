@@ -15,8 +15,8 @@ importers:
         specifier: ^7.7.1
         version: 7.7.2(astro@4.13.1(@types/node@22.0.0)(lightningcss@1.25.1)(typescript@5.4.5))
       '@iconify-json/feather':
-        specifier: ^1.1.8
-        version: 1.1.8
+        specifier: ^1.1.9
+        version: 1.1.9
       astro:
         specifier: ^4.13.1
         version: 4.13.1(@types/node@22.0.0)(lightningcss@1.25.1)(typescript@5.4.5)
@@ -559,8 +559,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify-json/feather@1.1.8':
-    resolution: {integrity: sha512-ueD65PfCC5/LDDIbqvPJ4/Fy3eKYPSTo1JFcrpufV39BluwtNzxhtxw5OLL+vAN/PlcH9gbuJw2ap5A50eVpuw==}
+  '@iconify-json/feather@1.1.9':
+    resolution: {integrity: sha512-TBnb4tMK+s6cVdEz178I/rHoJHGU/yVWw754QuJOTGS7lgsPWMZkzGDglXN8bPh4ZA9OsHF9FIVikkywPEedbg==}
 
   '@iconify/tools@3.0.7':
     resolution: {integrity: sha512-DxfhFLMnooS34dHelpGUnnYrxLZHs0czC1CgrBhAbuL8ddVzBb2VEQm8kh9qGh7A34qeXAB5iSHH3A72rAaFrg==}
@@ -4179,7 +4179,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify-json/feather@1.1.8':
+  '@iconify-json/feather@1.1.9':
     dependencies:
       '@iconify/types': 2.0.0
 
