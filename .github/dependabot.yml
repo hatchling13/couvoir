@@ -21,5 +21,3 @@ updates:
         patterns:
           - prettier
           - prettier-plugin-*
-    ignore:
-      - dependency-name: 'eslint*'
