@@ -24,7 +24,7 @@ React 베이스 프론트엔드 엔지니어를 표방하는 주제에 회사에
 
 물론 마음에 드는 점만 있는 것은 아니었다. 예를 들어 버튼을 하나 만든다 생각해보자. Figma 디자인 문서를 살펴보니 버튼은 4가지의 variant, 4가지의 size, 2가지의 outlined 상태 중 각각 한 가지씩을 입력받을 수 있다고 적혀있었다. 각 variant 간의 차이는 색상뿐이라 가정하자. 이런 경우, 작성해야 하는 Story의 수는 4 * 4 * 2 = 32가지가 된다. 이걸 일일이 손으로 적고 있자니 대체 뭐하는 짓인가 싶은 생각이 들었다. 꼼수로 반복문을 돌려야 하나 생각이 들다가도, [이런 글](https://simsimjae.tistory.com/391)을 봐버린 이상 그럴 수는 없는 것이다...
 
-여담이지만 글을 작성하며 이러한 현상이 전산학 세상에서는 이미 [다른 형태](https://incheol-jung.gitbook.io/docs/study/object/2020-03-10-object-chap11#undefined-1)로 등장한 바 있으며 [조합적 폭발](https://intelligence.worldofcomputing.net/ai-search/combinatorial-explosion.html#.WPUxSIWcEiQ)이라는 이름도 가지고 있다는 점을 알게 되었다. [아이스크림을 예시로 든 이 게시글](https://www.freecodecamp.org/news/combinatorics-handle-with-care-ed808b48e5dd/)을 보면 이해하기 쉬울 것 같다. 예전에 봤던 발표 세션 중 비슷한 문제를 해결하기 위한 한 가지 접근 방식을 제시하는 영상이 있었는데, 해당 부분을 좀 더 파볼 수도 있을 것 같다.
+여담이지만 글을 작성하며 이러한 현상이 전산학 세상에서는 이미 [다른 형태](https://incheol-jung.gitbook.io/docs/study/object/2020-03-10-object-chap11#undefined-1)로 등장한 바 있으며 [조합적 폭발](https://intelligence.worldofcomputing.net/ai-search/combinatorial-explosion.html#.WPUxSIWcEiQ)이라는 이름도 가지고 있다는 점을 알게 되었다. [아이스크림을 예시로 든 이 게시글](https://www.freecodecamp.org/news/combinatorics-handle-with-care-ed808b48e5dd/)을 보면 이해하기 쉬울 것 같다. 예전에 봤던 발표 세션 중 비슷한 문제를 해결하기 위한 한 가지 접근 방식을 제시하는 [영상](https://www.youtube.com/watch?v=Hv_PhrfwerQ)이 있었는데, 해당 부분을 좀 더 파볼 수도 있을 것 같다.
 
 # 코드스냅
 8월에 다루었던 글감은 코딩 시 알아두면 좋을 여러 가지 명명 규칙 제안에 대해서였다. 전산학에서 가장 어려운 주제 두 가지가 이름 짓기와 캐시 무효화라는 말이 있을 정도로 이름 짓기는 머리를 싸매게 되는 문제이며, 관련 글도 참 많이 보이곤 한다. 해당 글은 이름의 중요성을 간단한 예시와 함께 역설하며, 초심자가 어느 정도 가이드라인으로 삼을 만한 여러 규칙들을 제안하고 있어 다루게 되었다.
