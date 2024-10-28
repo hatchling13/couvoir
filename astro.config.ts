@@ -26,4 +26,5 @@ export default defineConfig({
     remarkPlugins,
     rehypePlugins,
   },
+  site: 'https://www.hatchling.dev',
 });
