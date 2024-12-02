@@ -17,7 +17,7 @@
     "@astrojs/rss": "^4.0.9",
     "@astrojs/vercel": "^7.8.2",
     "@iconify-json/feather": "^1.2.0",
-    "astro": "^4.16.14",
+    "astro": "^4.16.16",
     "astro-icon": "^1.1.4",
     "rehype-katex": "^7.0.1",
     "rehype-shift-heading": "^2.0.0",
