@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/language-server':
         specifier: ^2.15.4
-        version: 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.1)(typescript@5.6.2)
+        version: 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.6.2)
       '@astrojs/rss':
         specifier: ^4.0.9
         version: 4.0.9
@@ -58,8 +58,8 @@ importers:
         specifier: ^6.10.2
         version: 6.10.2(eslint@9.15.0)
       prettier:
-        specifier: ^3.4.1
-        version: 3.4.1
+        specifier: ^3.4.2
+        version: 3.4.2
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
@@ -1108,8 +1108,8 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
 
-  agent-base@7.1.1:
-    resolution: {integrity: sha512-H0TSyFNDMomMNJQBn8wFV5YC/2eJ+VXECwOadZJT554xP6cODZHPX3H9QMQECxvrgiSOP1pHjy1sMWQVYJOUOA==}
+  agent-base@7.1.3:
+    resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
     engines: {node: '>= 14'}
 
   ajv@6.12.6:
@@ -1479,6 +1479,15 @@ packages:
 
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.4.0:
+    resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -2017,8 +2026,8 @@ packages:
     resolution: {integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==}
     engines: {node: '>= 6'}
 
-  https-proxy-agent@7.0.5:
-    resolution: {integrity: sha512-1e4Wqeblerz+tMKPIq2EMGiiWW1dIjZOksyHWSUm1rmuvw/how9hBHZ38lAGj5ID4Ik6EdkOw7NmWPy6LAwalw==}
+  https-proxy-agent@7.0.6:
+    resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
     engines: {node: '>= 14'}
 
   iconv-lite@0.6.3:
@@ -2944,8 +2953,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  prettier@3.4.1:
-    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2963,8 +2972,8 @@ packages:
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
-  psl@1.14.0:
-    resolution: {integrity: sha512-Syk1bnf6fRZ9wQs03AtKJHcM12cKbOLo9L8JtCCdYj5/DTsHmTyXM4BK5ouWeG2P6kZ4nmFvuNTdtaqfobCOCg==}
+  psl@1.15.0:
+    resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
 
   pump@3.0.2:
     resolution: {integrity: sha512-tUPXtzlGM8FE3P0ZL6DVs/3P58k9nk8/jZeQCurTJylQA8qFYzHFfhBJkuqyE0FifOsQ0uKWekiZ5g8wtr28cw==}
@@ -3621,8 +3630,8 @@ packages:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
     engines: {node: '>=18'}
 
-  whatwg-url@14.0.0:
-    resolution: {integrity: sha512-1lfMEm2IEr7RIV+f4lUNPOqfFL+pO+Xw3fJSqmjX9AbXcXcYOkCe1P6+9VBZB6n94af16NfZf+sSk0JCBZC9aw==}
+  whatwg-url@14.1.0:
+    resolution: {integrity: sha512-jlf/foYIKywAt3x/XWKZ/3rz8OSJPiWktjmk891alJUEjiVxKX9LEO92qH3hv4aJ0mN3MWPvGMCy8jQi95xK4w==}
     engines: {node: '>=18'}
 
   whatwg-url@5.0.0:
@@ -3757,7 +3766,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.1)(typescript@5.6.2)':
+  '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.6.2)':
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.2
@@ -3771,14 +3780,14 @@ snapshots:
       volar-service-css: 0.0.62(@volar/language-service@2.4.10)
       volar-service-emmet: 0.0.62(@volar/language-service@2.4.10)
       volar-service-html: 0.0.62(@volar/language-service@2.4.10)
-      volar-service-prettier: 0.0.62(@volar/language-service@2.4.10)(prettier@3.4.1)
+      volar-service-prettier: 0.0.62(@volar/language-service@2.4.10)(prettier@3.4.2)
       volar-service-typescript: 0.0.62(@volar/language-service@2.4.10)
       volar-service-typescript-twoslash-queries: 0.0.62(@volar/language-service@2.4.10)
       volar-service-yaml: 0.0.62(@volar/language-service@2.4.10)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.0.8
     optionalDependencies:
-      prettier: 3.4.1
+      prettier: 3.4.2
       prettier-plugin-astro: 0.14.1
     transitivePeerDependencies:
       - typescript
@@ -4888,11 +4897,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  agent-base@7.1.1:
-    dependencies:
-      debug: 4.3.7
-    transitivePeerDependencies:
-      - supports-color
+  agent-base@7.1.3:
     optional: true
 
   ajv@6.12.6:
@@ -5362,7 +5367,7 @@ snapshots:
   data-urls@5.0.0:
     dependencies:
       whatwg-mimetype: 4.0.0
-      whatwg-url: 14.0.0
+      whatwg-url: 14.1.0
     optional: true
 
   data-view-buffer@1.0.1:
@@ -5386,6 +5391,11 @@ snapshots:
   debug@4.3.7:
     dependencies:
       ms: 2.1.3
+
+  debug@4.4.0:
+    dependencies:
+      ms: 2.1.3
+    optional: true
 
   decimal.js@10.4.3:
     optional: true
@@ -6106,8 +6116,8 @@ snapshots:
 
   http-proxy-agent@7.0.2:
     dependencies:
-      agent-base: 7.1.1
-      debug: 4.3.7
+      agent-base: 7.1.3
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -6119,10 +6129,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@7.0.5:
+  https-proxy-agent@7.0.6:
     dependencies:
-      agent-base: 7.1.1
-      debug: 4.3.7
+      agent-base: 7.1.3
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -6276,7 +6286,7 @@ snapshots:
       form-data: 4.0.1
       html-encoding-sniffer: 4.0.0
       http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.5
+      https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
       nwsapi: 2.2.16
       parse5: 7.2.1
@@ -6288,7 +6298,7 @@ snapshots:
       webidl-conversions: 7.0.0
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
-      whatwg-url: 14.0.0
+      whatwg-url: 14.1.0
       ws: 8.18.0
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
@@ -7168,7 +7178,7 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.10.3
-      prettier: 3.4.1
+      prettier: 3.4.2
       sass-formatter: 0.7.9
 
   prettier@2.8.7:
@@ -7176,7 +7186,7 @@ snapshots:
 
   prettier@3.2.5: {}
 
-  prettier@3.4.1: {}
+  prettier@3.4.2: {}
 
   prismjs@1.29.0: {}
 
@@ -7189,7 +7199,7 @@ snapshots:
 
   proxy-from-env@1.1.0: {}
 
-  psl@1.14.0:
+  psl@1.15.0:
     dependencies:
       punycode: 2.3.1
     optional: true
@@ -7631,7 +7641,7 @@ snapshots:
 
   tough-cookie@4.1.4:
     dependencies:
-      psl: 1.14.0
+      psl: 1.15.0
       punycode: 2.3.1
       universalify: 0.2.0
       url-parse: 1.5.10
@@ -7874,12 +7884,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.10
 
-  volar-service-prettier@0.0.62(@volar/language-service@2.4.10)(prettier@3.4.1):
+  volar-service-prettier@0.0.62(@volar/language-service@2.4.10)(prettier@3.4.2):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.10
-      prettier: 3.4.1
+      prettier: 3.4.2
 
   volar-service-typescript-twoslash-queries@0.0.62(@volar/language-service@2.4.10):
     dependencies:
@@ -7979,7 +7989,7 @@ snapshots:
 
   whatwg-mimetype@4.0.0: {}
 
-  whatwg-url@14.0.0:
+  whatwg-url@14.1.0:
     dependencies:
       tr46: 5.0.0
       webidl-conversions: 7.0.0
