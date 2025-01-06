@@ -16,13 +16,13 @@ importers:
         version: 4.0.10
       '@astrojs/vercel':
         specifier: ^8.0.1
-        version: 8.0.1(astro@5.1.1(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1))(rollup@4.29.1)
+        version: 8.0.1(astro@5.1.1(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1))(rollup@4.29.1)
       '@iconify-json/feather':
         specifier: ^1.2.1
         version: 1.2.1
       astro:
         specifier: ^5.1.1
-        version: 5.1.1(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1)
+        version: 5.1.1(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1)
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -43,8 +43,8 @@ importers:
         specifier: ^0.51.1
         version: 0.51.1(jsdom@25.0.0)(typescript@5.6.2)
       '@types/node':
-        specifier: ^22.10.2
-        version: 22.10.2
+        specifier: ^22.10.5
+        version: 22.10.5
       '@typescript-eslint/parser':
         specifier: ^8.18.2
         version: 8.18.2(eslint@9.17.0(jiti@2.4.2))(typescript@5.6.2)
@@ -1096,8 +1096,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@22.10.2':
-    resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
+  '@types/node@22.10.5':
+    resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
 
   '@types/tar@6.1.13':
     resolution: {integrity: sha512-IznnlmU5f4WcGTh2ltRu/Ijpmk8wiWXfF0VA4s+HPjHZgvFggk1YaIkbo5krX/zUCzWF8N/l4+W/LNxnvAJ8nw==}
@@ -4135,13 +4135,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@8.0.1(astro@5.1.1(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1))(rollup@4.29.1)':
+  '@astrojs/vercel@8.0.1(astro@5.1.1(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1))(rollup@4.29.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.2
       '@vercel/analytics': 1.4.1
       '@vercel/edge': 1.1.4
       '@vercel/nft': 0.27.9(rollup@4.29.1)
-      astro: 5.1.1(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1)
+      astro: 5.1.1(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1)
       esbuild: 0.24.0
       fast-glob: 3.3.2
     transitivePeerDependencies:
@@ -5005,20 +5005,20 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@22.10.2':
+  '@types/node@22.10.5':
     dependencies:
       undici-types: 6.20.0
 
   '@types/tar@6.1.13':
     dependencies:
-      '@types/node': 22.10.2
+      '@types/node': 22.10.5
       minipass: 4.2.8
 
   '@types/unist@3.0.3': {}
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.10.2
+      '@types/node': 22.10.5
     optional: true
 
   '@typescript-eslint/parser@8.18.2(eslint@9.17.0(jiti@2.4.2))(typescript@5.6.2)':
@@ -5326,7 +5326,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro@5.1.1(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1):
+  astro@5.1.1(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@4.29.1)(typescript@5.6.2)(yaml@2.6.1):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.2
@@ -5378,8 +5378,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.14.1
       vfile: 6.0.3
-      vite: 6.0.5(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1)
-      vitefu: 1.0.4(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1))
+      vite: 6.0.5(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1)
+      vitefu: 1.0.4(vite@6.0.5(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1))
       which-pm: 3.0.0
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
@@ -8312,21 +8312,21 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1):
+  vite@6.0.5(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1):
     dependencies:
       esbuild: 0.24.0
       postcss: 8.4.49
       rollup: 4.29.1
     optionalDependencies:
-      '@types/node': 22.10.2
+      '@types/node': 22.10.5
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.27.0
       yaml: 2.6.1
 
-  vitefu@1.0.4(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1)):
+  vitefu@1.0.4(vite@6.0.5(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1)):
     optionalDependencies:
-      vite: 6.0.5(@types/node@22.10.2)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1)
+      vite: 6.0.5(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.27.0)(yaml@2.6.1)
 
   volar-service-css@0.0.62(@volar/language-service@2.4.10):
     dependencies:
