@@ -14,10 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "@astrojs/language-server": "^2.15.4",
-    "@astrojs/rss": "^4.0.10",
+    "@astrojs/rss": "^4.0.11",
     "@astrojs/vercel": "^8.0.1",
     "@iconify-json/feather": "^1.2.1",
-    "astro": "^5.1.1",
+    "astro": "^5.1.5",
     "astro-icon": "^1.1.5",
     "rehype-katex": "^7.0.1",
     "rehype-shift-heading": "^2.0.0",
