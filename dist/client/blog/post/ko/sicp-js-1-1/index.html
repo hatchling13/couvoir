@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="ko"> <head><title>SICP JS - 1.1: 프로그래밍의 요소 정리</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.7.10"><meta name="description" content="Structure and Interpretion of Computer Programs, JavaScript Edition / Harold Abelson and Gerald Jay Sussman; adapted to JavaScript by Martin Henz and Tobias Wrigstad; with Julie Sussman"><link rel="stylesheet" href="/_astro/_slug_.BbqHp5pO.css"></head> <body class="h_full d_flex flex-d_column"> <nav class="py_4 h_16 c_etainSnowGray ff_serif fs_lg sm:fs_xl md:fs_2xl lg:fs_3xl font-style_italic d_flex jc_center ai_center"> <a href="/" class="td_none hover:td_underline focus:td_underline active:td_underline">Couvoir</a><span class="px_1 sm:px_1 md:px_2 lg:px_2">=</span>f<a href="/playground" class="td_none hover:td_underline focus:td_underline active:td_underline">(playground)</a><a href="/blog" class="td_none hover:td_underline focus:td_underline active:td_underline">(blog)</a><a href="/me" class="td_none hover:td_underline focus:td_underline active:td_underline">(me)</a> </nav> <main class="flex-g_1 d_flex jc_center ai_center"> <div class="min-w_0 w_8xl py_4 px_8 d_flex flex-d_column"> <h1 class="fs_3xl md:fs_4xl lg:fs_5xl fw_bold wb_keep-all">SICP JS - 1.1: 프로그래밍의 요소 정리</h1> <p class="fs_2xl fw_semibold">2023. 11. 22.</p> <hr class="my_2"> <section class="fw_semibold [&#38;_h2]:wb_keep-all [&#38;_h2]:py_2 [&#38;_h2]:fs_2xl [&#38;_h2]:md:fs_2xl [&#38;_h2]:lg:fs_4xl [&#38;_h3]:wb_keep-all [&#38;_h3]:py_2 [&#38;_h3]:fs_xl [&#38;_h3]:md:fs_xl [&#38;_h3]:lg:fs_3xl [&#38;_h4]:wb_keep-all [&#38;_h4]:py_2 [&#38;_h4]:fs_lg [&#38;_h4]:md:fs_lg [&#38;_h4]:lg:fs_2xl [&#38;_p]:py_4 [&#38;_p]:fs_md [&#38;_p]:md:fs_md [&#38;_p]:lg:fs_xl [&#38;_p]:lh_relaxed [&#38;_p]:[&#38;_code]:px_1 [&#38;_p]:[&#38;_code]:py_0.5 [&#38;_p]:[&#38;_code]:bdr_sm [&#38;_p]:[&#38;_code]:bg-c_torvishDeepSea [&#38;_p]:[&#38;_code]:c_deepOrange [&#38;_ul]:px_10 [&#38;_ul]:py_4 [&#38;_ul]:fs_md [&#38;_ul]:md:fs_md [&#38;_ul]:lg:fs_xl [&#38;_ul]:lh_relaxed [&#38;_ul]:li-t_disc [&#38;_ol]:px_10 [&#38;_ol]:py_4 [&#38;_ol]:fs_md [&#38;_ol]:md:fs_md [&#38;_ol]:lg:fs_xl [&#38;_ol]:lh_relaxed [&#38;_ol]:li-t_decimal [&#38;_pre]:p_4 [&#38;_pre]:bdr_md [&#38;_a]:td_underline">  <p>SICP JS를 읽고, 이미 체득했다고 생각하는 정보들은 제외한 후 기억해둘 만하다 생각한 정보를 나열(정리가 아니다!)하였다.</p>
+<!-- more -->
+<p>프로그래밍 언어는 컴퓨터에게 작업을 지시하는 수단 <strong>그 이상</strong>의 것</p>
+<p>-> 프로세스에 관한 생각을 정리하기 위한 기본적인 개념 구조
+-> 간단한 생각들을 조합하여 더 복잡한 생각을 형성하기 위해 언어가 제공하는 수단에 특히 주목해야 함</p>
+<ul>
+<li>Primitive expressions: 언어가 다루는 ‘가장 단순한 개체’를 나타내는 방법</li>
+<li>Means of combination: 보다 간단한 요소로부터 복합 요소가 구성되는 방법</li>
+<li>Means of abstraction: 복합 요소를 하나의 단위로 이름 붙이고 조작할 수 있는 방법</li>
+</ul>
+<p>프로그래밍에서는 크게 ‘함수’, ‘데이터’ 두 가지의 요소를 다룸.</p>
+<p>-> 데이터: 우리가 조작하고 싶은 것
+-> 함수: 데이터를 조작하기 위한 규칙을 기술한 것</p>
+<p>따라서 프로그래밍 언어는:</p>
+<ol>
+<li>원시 데이터와 원시 함수를 표현할 수 있어야 함</li>
+<li>1을 각각 조합/추상화할 수 있는 수단이 있어야 함</li>
+</ol>
+<hr>
+<p>프로그래밍 언어의 중요한 측면 중 하나는 무언가에게 이름을 붙일 수 있는 수단을 제공한다는 점</p>
+<p>→ 값에 이름을 붙이고, 이름으로부터 값을 가져오기 위해 이름-값 쌍에 대한 정보를 저장할 공간이 필요하며, 이를 환경(또는 프로그램 환경)이라고 부름</p>
+<ol>
+<li>
+<p>상수: 이름 붙이는 대상이 ‘값’일 때: 가장 간단한 추상화 수단. 복합 연산(compound operations)의 결과를 간단한 이름으로 지칭할 수 있게 해줌.</p>
+</li>
+<li>
+<p>함수: 이름 붙여진 후 하나의 단위로 다루어지는 대상이 ‘복합 연산’일 때</p>
+</li>
+</ol>
+<hr>
+<ul>
+<li>Applicative-Order: 인자 표현식이 먼저 평가된 후 함수에 제공하는 방식</li>
+<li>Normal-Order: 값이 실제로 필요할 때까지 인자 표현식을 평가하지 않는 방식(Lazy evaluation)</li>
+</ul>
+<hr>
+<p>수학의 함수와 컴퓨터의 함수 간 중요한 차이: 선언형(declarative) vs 명령형(imperative)</p>
+<hr>
+<p>‘분해 전략(decomposition strategy)’의 중요한 점</p>
+<p>-> 단순히 프로그램을 나누는 것에 그치지 않고, 식별 가능한 서로 다른 작업을 수행함으로써 다른 함수를 정의하기 위한 ‘모듈’로 사용될 수 있음.</p>
+<p>-> 모듈이 어떻게 동작하는 지는 알 필요 없으며(blackbox), 무엇을 하는 지만 알면 된다. 상위 레벨의 함수의 관점에서 생각할 때, 하위 함수의 세부 사항은 ‘기능 추상화(functional abstraction)’라는 이름 하에 숨겨진다. 즉, 동일한 입출력을 가지고 같은 결과를 내는 함수는 서로 구분할 수 없다.</p>
+<hr>
+<p>한 쌍의 중괄호를 이용하여 ‘블록’을 만들 수 있고, 블록 내부의 선언은 해당 블록 내부에서만 유효하다. 선언의 위치에 따라 특정 이름이 가리키는 값이 정해지며, 이를 ‘어휘적 범위 지정(lexical scoping)’이라고 한다.</p>  </section> <hr class="my_2"> <ul class="p_2 fs_lg fw_medium">SICP, SICP JS, 컴퓨터 프로그램의 구조와 해석</ul> </div> </main> <footer class="c_etainSnowGray fs_md sm:fs_md md:fs_lg lg:fs_xl py_4 d_flex flex-d_column jc_center ai_center"> <p>
+Powered by <a class="td_none hover:td_underline focus:td_underline active:td_underline" href="https://astro.build">Astro</a>.
+</p> <p>
+Special thanks to <a class="td_none hover:td_underline focus:td_underline active:td_underline" href="https://lute.fantazm.net/dye">지염도서관</a>, <a class="td_none hover:td_underline focus:td_underline active:td_underline" href="https://crepe.cm/@naega_haenaem_">내가해냄</a>!
+</p> </footer> </body></html>
