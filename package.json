@@ -35,11 +35,9 @@
     "prettier-plugin-astro": "^0.14.1"
   },
   "packageManager": "pnpm@10.7.0",
-  "overrides": {
-    "@astrojs/vercel": {
-      "@vercel/routing-utils": {
-        "path-to-regexp": "8.2.0"
-      }
+  "pnpm": {
+    "overrides": {
+      "path-to-regexp": "8.2.0"
     }
   }
 }
