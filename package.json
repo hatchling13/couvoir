@@ -36,8 +36,10 @@
   },
   "packageManager": "pnpm@10.7.0",
   "overrides": {
-    "@vercel/routing-utils": {
-      "path-to-regexp": "8.2.0"
+    "@astrojs/vercel": {
+      "@vercel/routing-utils": {
+        "path-to-regexp": "8.2.0"
+      }
     }
   }
 }
