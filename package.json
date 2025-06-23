@@ -15,9 +15,9 @@
   "dependencies": {
     "@astrojs/language-server": "^2.15.4",
     "@astrojs/rss": "^4.0.12",
-    "@astrojs/vercel": "^8.1.5",
+    "@astrojs/vercel": "^8.2.0",
     "@iconify-json/feather": "^1.2.1",
-    "astro": "^5.9.3",
+    "astro": "^5.10.0",
     "astro-icon": "^1.1.5",
     "rehype-katex": "^7.0.1",
     "rehype-shift-heading": "^2.0.0",
