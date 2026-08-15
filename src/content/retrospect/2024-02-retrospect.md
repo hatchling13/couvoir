@@ -3,9 +3,9 @@ date: "2024-03-10"
 description: 정신 차려보니 3월의 1/3이 지나있던 건에 대해
 taxonomies:
   categories:
-  - retrospect
+    - retrospect
   tags:
-  - 회고
+    - 회고
 title: 2024년 2월 회고
 ---
 

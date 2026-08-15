@@ -5,12 +5,12 @@ description: Structure and Interpretion of Computer Programs, JavaScript Edition
   Tobias Wrigstad; with Julie Sussman
 taxonomies:
   categories:
-  - blog
+    - blog
   tags:
-  - SICP
-  - SICP JS
-  - 컴퓨터 프로그램의 구조와 해석
-title: 'SICP JS - 1.3: 고차 함수로 추상화를 공식화하기'
+    - SICP
+    - SICP JS
+    - 컴퓨터 프로그램의 구조와 해석
+title: "SICP JS - 1.3: 고차 함수로 추상화를 공식화하기"
 ---
 
 SICP JS를 읽고, 이미 체득했다고 생각하는 정보들은 제외한 후 기억해둘 만하다 생각한 정보를 나열(정리가 아니다!)하였다.
@@ -20,9 +20,9 @@ SICP JS를 읽고, 이미 체득했다고 생각하는 정보들은 제외한 �
 
 예를 들어 정수 $a$부터 $b$까지 각각의 합을 구하는 함수 $F(a,\space b)$, 제곱의 합을 구하는 함수 $G(a,\space b)$, 세제곱의 합을 구하는 함수 $H(a,\space b)$ 등등을 생각해보자. 연산에 사용되는 수는 각각 $i$, $i^2$, $i^3(i \isin Z,a \le i \le b)$으로 다르지만 ‘합’을 구한다는 점에서는 모두가 동일하기 때문에, 수학자들은 $\sum$(시그마) 기호를 통해 ‘무언가의 합을 구하는 과정‘을 추상화해냈다. 따라서 우리는 이 추상화를 이용하여, 각 함수를 다음과 같이 표현할 수 있다.
 
-$$$
+$$
 f(x)=x,~g(x)=x^2,~h(x)=x^3일~때,\\F(a,~b)=\sum_{\substack{a\le i\le b}}{f(i)}=\sum_{\substack{a\le i\le b}}{i}\\G(a,~b)=\sum_{\substack{a\le i\le b}}{g(i)}=\sum_{\substack{a\le i\le b}}{i^2}\\H(a,~b)=\sum_{\substack{a\le i\le b}}{h(i)}=\sum_{\substack{a\le i\le b}}{i^3}
-$$$
+$$
 
 이러한 추상화를 프로그래밍에도 마찬가지로 적용할 수 있다.
 

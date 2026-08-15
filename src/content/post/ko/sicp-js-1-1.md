@@ -5,12 +5,12 @@ description: Structure and Interpretion of Computer Programs, JavaScript Edition
   Tobias Wrigstad; with Julie Sussman
 taxonomies:
   categories:
-  - blog
+    - blog
   tags:
-  - SICP
-  - SICP JS
-  - 컴퓨터 프로그램의 구조와 해석
-title: 'SICP JS - 1.1: 프로그래밍의 요소 정리'
+    - SICP
+    - SICP JS
+    - 컴퓨터 프로그램의 구조와 해석
+title: "SICP JS - 1.1: 프로그래밍의 요소 정리"
 ---
 
 SICP JS를 읽고, 이미 체득했다고 생각하는 정보들은 제외한 후 기억해둘 만하다 생각한 정보를 나열(정리가 아니다!)하였다.
@@ -31,6 +31,7 @@ SICP JS를 읽고, 이미 체득했다고 생각하는 정보들은 제외한 �
 -> 함수: 데이터를 조작하기 위한 규칙을 기술한 것
 
 따라서 프로그래밍 언어는:
+
 1. 원시 데이터와 원시 함수를 표현할 수 있어야 함
 2. 1을 각각 조합/추상화할 수 있는 수단이 있어야 함
 
@@ -40,7 +41,7 @@ SICP JS를 읽고, 이미 체득했다고 생각하는 정보들은 제외한 �
 
 → 값에 이름을 붙이고, 이름으로부터 값을 가져오기 위해 이름-값 쌍에 대한 정보를 저장할 공간이 필요하며, 이를 환경(또는 프로그램 환경)이라고 부름
 
-1. 상수: 이름 붙이는 대상이 ‘값’일 때: 가장 간단한 추상화 수단. 복합 연산(compound operations)의 결과를 간단한 이름으로 지칭할 수 있게 해줌. 
+1. 상수: 이름 붙이는 대상이 ‘값’일 때: 가장 간단한 추상화 수단. 복합 연산(compound operations)의 결과를 간단한 이름으로 지칭할 수 있게 해줌.
 
 2. 함수: 이름 붙여진 후 하나의 단위로 다루어지는 대상이 ‘복합 연산’일 때
 

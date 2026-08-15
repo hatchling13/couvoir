@@ -3,9 +3,9 @@ date: "2023-03-01"
 description: 공식적으로 백수가 된 나
 taxonomies:
   categories:
-  - retrospect
+    - retrospect
   tags:
-  - 회고
+    - 회고
 title: 2023년 2월 회고
 ---
 

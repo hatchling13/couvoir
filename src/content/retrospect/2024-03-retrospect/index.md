@@ -3,9 +3,9 @@ date: "2024-04-16"
 description: 프로젝트 돌아보기 및 앞으로
 taxonomies:
   categories:
-  - retrospect
+    - retrospect
   tags:
-  - 회고
+    - 회고
 title: 2024년 3월 회고
 ---
 
