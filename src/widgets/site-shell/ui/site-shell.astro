@@ -1,7 +1,4 @@
 ---
-import { css } from "@styled-system/css";
-import "@shared/styles/global.css";
-
 import SiteFooter from "./site-footer.astro";
 import SiteNavigation from "./site-navigation.astro";
 
@@ -14,22 +11,10 @@ const { title, description } = Astro.props;
 
 const siteName = "Couvoir";
 const documentTitle = title === siteName ? title : `${title} | ${siteName}`;
-
-const bodyStyles = css({
-  minH: "dvh",
-  bg: "gray.50",
-  color: "gray.950",
-  fontFamily: "system-ui, sans-serif",
-  display: "flex",
-  flexDir: "column",
-});
-
-const mainStyles = css({
-  flex: "1",
-});
+const locale = Astro.currentLocale ?? "ko";
 ---
 
-<html lang="ko">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -39,9 +24,9 @@ const mainStyles = css({
     <link rel="icon" href="/favicon.ico" />
     <title>{documentTitle}</title>
   </head>
-  <body class={bodyStyles}>
+  <body>
     <SiteNavigation />
-    <main class={mainStyles}>
+    <main>
       <slot />
     </main>
     <SiteFooter />

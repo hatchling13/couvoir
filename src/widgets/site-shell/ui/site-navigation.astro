@@ -1,51 +1,39 @@
 ---
-import { css } from "@styled-system/css";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locales = ["ko", "en"] as const;
+type Locale = (typeof locales)[number];
+
+const currentLocale = locales.includes(Astro.currentLocale as Locale)
+  ? (Astro.currentLocale as Locale)
+  : "ko";
+const navigationLabel = currentLocale === "ko" ? "주요 메뉴" : "Primary";
 
 const links = [
-  { href: "/", label: "Couvoir" },
-  { href: "/playground", label: "Playground" },
-  { href: "/me", label: "Me" },
-  { href: "/blog", label: "Blog" },
-];
+  { path: "", label: "Couvoir" },
+  { path: "playground", label: "Playground" },
+  { path: "me", label: "Me" },
+  { path: "blog", label: "Blog" },
+].map(({ path, label }) => ({
+  href: getRelativeLocaleUrl(currentLocale, path),
+  label,
+}));
 
-const navigationStyles = css({
-  px: "6",
-  py: "4",
-  display: "flex",
-  justifyContent: "center",
-});
+const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
+const currentPath = normalizePath(Astro.url.pathname);
+const localeRoot = normalizePath(getRelativeLocaleUrl(currentLocale));
 
-const listStyles = css({
-  display: "flex",
-  alignItems: "center",
-  gap: { base: "4", md: "6" },
-  flexWrap: "wrap",
-});
+const isCurrentPage = (href: string) => {
+  const linkPath = normalizePath(href);
 
-const linkStyles = css({
-  color: "gray.600",
-  fontWeight: "medium",
-  textDecoration: "none",
-  _hover: { color: "gray.950" },
-  _focusVisible: {
-    outline: "2px solid",
-    outlineColor: "blue.500",
-    outlineOffset: "4px",
-  },
-});
-
-const activeLinkStyles = css({
-  color: "gray.950",
-});
-
-const isCurrentPage = (href: string) =>
-  href === "/"
-    ? Astro.url.pathname === href
-    : Astro.url.pathname.startsWith(href);
+  return linkPath === localeRoot
+    ? currentPath === localeRoot
+    : currentPath === linkPath || currentPath.startsWith(`${linkPath}/`);
+};
 ---
 
-<nav aria-label="Primary" class={navigationStyles}>
-  <ul class={listStyles}>
+<nav aria-label={navigationLabel}>
+  <ul>
     {
       links.map(({ href, label }) => {
         const isCurrent = isCurrentPage(href);
@@ -54,7 +42,6 @@ const isCurrentPage = (href: string) =>
           <li>
             <a
               href={href}
-              class:list={[linkStyles, { [activeLinkStyles]: isCurrent }]}
               aria-current={isCurrent ? "page" : undefined}
             >
               {label}
