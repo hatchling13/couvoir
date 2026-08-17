@@ -1,0 +1,15 @@
+---
+import { css } from "@styled-system/css";
+import { SiteShell } from "@widgets/site-shell";
+
+const contentStyles = css({
+  px: "6",
+  py: "16",
+  maxW: "5xl",
+  mx: "auto",
+});
+---
+
+<SiteShell title="Blog" description="Thoughts, retrospects, and software notes.">
+  <h1 class={contentStyles}>Blog</h1>
+</SiteShell>

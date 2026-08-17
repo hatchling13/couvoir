@@ -1,0 +1,67 @@
+---
+import { css } from "@styled-system/css";
+
+const links = [
+  { href: "/", label: "Couvoir" },
+  { href: "/playground", label: "Playground" },
+  { href: "/me", label: "Me" },
+  { href: "/blog", label: "Blog" },
+];
+
+const navigationStyles = css({
+  px: "6",
+  py: "4",
+  display: "flex",
+  justifyContent: "center",
+});
+
+const listStyles = css({
+  display: "flex",
+  alignItems: "center",
+  gap: { base: "4", md: "6" },
+  flexWrap: "wrap",
+});
+
+const linkStyles = css({
+  color: "gray.600",
+  fontWeight: "medium",
+  textDecoration: "none",
+  _hover: { color: "gray.950" },
+  _focusVisible: {
+    outline: "2px solid",
+    outlineColor: "blue.500",
+    outlineOffset: "4px",
+  },
+});
+
+const activeLinkStyles = css({
+  color: "gray.950",
+});
+
+const isCurrentPage = (href: string) =>
+  href === "/"
+    ? Astro.url.pathname === href
+    : Astro.url.pathname.startsWith(href);
+---
+
+<nav aria-label="Primary" class={navigationStyles}>
+  <ul class={listStyles}>
+    {
+      links.map(({ href, label }) => {
+        const isCurrent = isCurrentPage(href);
+
+        return (
+          <li>
+            <a
+              href={href}
+              class:list={[linkStyles, { [activeLinkStyles]: isCurrent }]}
+              aria-current={isCurrent ? "page" : undefined}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
