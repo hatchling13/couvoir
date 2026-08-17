@@ -14,7 +14,7 @@ const articleSchema = z.object({
 
 const post = defineCollection({
   loader: glob({
-    base: "./src/content/post",
+    base: "./content/post",
     pattern: "**/*.md",
   }),
   schema: articleSchema,
@@ -22,7 +22,7 @@ const post = defineCollection({
 
 const retrospect = defineCollection({
   loader: glob({
-    base: "./src/content/retrospect",
+    base: "./content/retrospect",
     pattern: "**/*.md",
   }),
   schema: articleSchema,
