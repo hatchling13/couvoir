@@ -1,31 +1,40 @@
 ---
 import "katex/dist/katex.min.css";
+import {
+  dateLocales,
+  localeText,
+  type Locale,
+} from "@shared/config/i18n";
 
 interface Props {
   title: string;
   description: string;
   date: Date;
   tags: string[];
+  locale: Locale;
 }
 
-const { title, description, date, tags } = Astro.props;
+const { title, description, date, tags, locale } = Astro.props;
+const text = localeText[locale];
 ---
 
 <article>
   <header>
     <h1>{title}</h1>
     <p>{description}</p>
-    <time datetime={date.toISOString()}>{date.toLocaleDateString("ko-KR")}</time>
+    <time datetime={date.toISOString()}>
+      {date.toLocaleDateString(dateLocales[locale])}
+    </time>
   </header>
 
-  <section aria-label="본문">
+  <section aria-label={text.articleBody}>
     <slot />
   </section>
 
   {
     tags.length > 0 && (
       <footer>
-        <ul aria-label="태그">
+        <ul aria-label={text.tags}>
           {tags.map((tag) => <li>{tag}</li>)}
         </ul>
       </footer>

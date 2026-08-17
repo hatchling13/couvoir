@@ -1,0 +1,28 @@
+---
+import { ArticleEntry, type ArticleSummary } from "@entities/article";
+import { localeText, type Locale } from "@shared/config/i18n";
+
+interface Props {
+  articles: ArticleSummary[];
+  locale: Locale;
+  headingLevel?: 2 | 3;
+}
+
+const { articles, locale, headingLevel = 2 } = Astro.props;
+---
+
+{
+  articles.length > 0 ? (
+    <ul>
+      {articles.map((article) => (
+        <ArticleEntry
+          {...article}
+          locale={locale}
+          headingLevel={headingLevel}
+        />
+      ))}
+    </ul>
+  ) : (
+    <p>{localeText[locale].empty}</p>
+  )
+}

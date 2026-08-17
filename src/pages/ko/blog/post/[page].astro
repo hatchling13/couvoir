@@ -1,0 +1,38 @@
+---
+import {
+  getArticleSummaries,
+  type ArticleSummary,
+} from "@entities/article";
+import { localeText } from "@shared/config/i18n";
+import { ArticleList, ArticlePagination } from "@widgets/article-list";
+import { SiteShell } from "@widgets/site-shell";
+import type { GetStaticPaths, Page } from "astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const locale = "ko";
+  const articles = await getArticleSummaries("post", locale);
+
+  return paginate(articles, { pageSize: 4 });
+}) satisfies GetStaticPaths;
+
+const locale = "ko";
+
+interface Props {
+  page: Page<ArticleSummary>;
+}
+
+const { page } = Astro.props;
+const text = localeText[locale];
+---
+
+<SiteShell title={text.posts} description="게시글 목록.">
+  <h1>{text.posts}</h1>
+  <ArticleList articles={page.data} locale={locale} />
+  <ArticlePagination
+    currentPage={page.currentPage}
+    lastPage={page.lastPage}
+    basePath={getRelativeLocaleUrl(locale, "blog/post")}
+    locale={locale}
+  />
+</SiteShell>

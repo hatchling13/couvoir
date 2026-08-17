@@ -1,7 +1,30 @@
 ---
+import { getArticleSummaries } from "@entities/article";
+import { localeText } from "@shared/config/i18n";
+import { ArticleSection } from "@widgets/article-list";
 import { SiteShell } from "@widgets/site-shell";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locale = "en";
+const [posts, retrospects] = await Promise.all([
+  getArticleSummaries("post", locale),
+  getArticleSummaries("retrospect", locale),
+]);
+const text = localeText[locale];
 ---
 
 <SiteShell title="Blog" description="Thoughts, retrospects, and software notes.">
   <h1>Blog</h1>
+  <ArticleSection
+    title={text.posts}
+    articles={posts.slice(0, 4)}
+    moreHref={getRelativeLocaleUrl(locale, "blog/post/1")}
+    locale={locale}
+  />
+  <ArticleSection
+    title={text.retrospects}
+    articles={retrospects.slice(0, 4)}
+    moreHref={getRelativeLocaleUrl(locale, "blog/retrospect/1")}
+    locale={locale}
+  />
 </SiteShell>

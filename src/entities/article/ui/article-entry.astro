@@ -1,0 +1,29 @@
+---
+import { dateLocales, type Locale } from "@shared/config/i18n";
+import type { ArticleSummary } from "../model/article";
+
+interface Props extends ArticleSummary {
+  locale: Locale;
+  headingLevel?: 2 | 3;
+}
+
+const {
+  title,
+  description,
+  date,
+  href,
+  locale,
+  headingLevel = 2,
+} = Astro.props;
+const Heading = `h${headingLevel}` as "h2" | "h3";
+---
+
+<li>
+  <article>
+    <Heading><a href={href}>{title}</a></Heading>
+    <p>{description}</p>
+    <time datetime={date.toISOString()}>
+      {date.toLocaleDateString(dateLocales[locale])}
+    </time>
+  </article>
+</li>

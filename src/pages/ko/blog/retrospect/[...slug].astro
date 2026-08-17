@@ -1,23 +1,19 @@
 ---
-import { ArticleView } from "@entities/article";
+import { ArticleView, getArticleSlug, getArticles } from "@entities/article";
 import { SiteShell } from "@widgets/site-shell";
 import {
-  getCollection,
   render,
   type CollectionEntry,
 } from "astro:content";
 
 export async function getStaticPaths() {
   const locale = "ko";
-  const entries = await getCollection("retrospect");
-  const localePrefix = `${locale}/`;
+  const entries = await getArticles("retrospect", locale);
 
-  return entries
-    .filter((entry) => entry.id.startsWith(localePrefix))
-    .map((entry) => ({
-      params: { slug: entry.id.slice(localePrefix.length) },
-      props: { entry },
-    }));
+  return entries.map((entry) => ({
+    params: { slug: getArticleSlug(entry, locale) },
+    props: { entry },
+  }));
 }
 
 interface Props {
@@ -35,6 +31,7 @@ const { title, description, date, taxonomies } = entry.data;
     description={description}
     date={date}
     tags={taxonomies.tags}
+    locale="ko"
   >
     <Content />
   </ArticleView>

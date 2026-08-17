@@ -1,0 +1,20 @@
+---
+import type { ArticleSummary } from "@entities/article";
+import { localeText, type Locale } from "@shared/config/i18n";
+import ArticleList from "./article-list.astro";
+
+interface Props {
+  title: string;
+  articles: ArticleSummary[];
+  moreHref: string;
+  locale: Locale;
+}
+
+const { title, articles, moreHref, locale } = Astro.props;
+---
+
+<section>
+  <h2>{title}</h2>
+  <ArticleList articles={articles} locale={locale} headingLevel={3} />
+  {articles.length > 0 && <a href={moreHref}>{localeText[locale].more}</a>}
+</section>

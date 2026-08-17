@@ -1,4 +1,6 @@
 ---
+import { getLocale } from "@shared/config/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import SiteFooter from "./site-footer.astro";
 import SiteNavigation from "./site-navigation.astro";
 
@@ -11,7 +13,7 @@ const { title, description } = Astro.props;
 
 const siteName = "Couvoir";
 const documentTitle = title === siteName ? title : `${title} | ${siteName}`;
-const locale = Astro.currentLocale ?? "ko";
+const locale = getLocale(Astro.currentLocale);
 ---
 
 <html lang={locale}>
@@ -22,6 +24,12 @@ const locale = Astro.currentLocale ?? "ko";
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Couvoir RSS"
+      href={getRelativeLocaleUrl(locale, "rss.xml")}
+    />
     <title>{documentTitle}</title>
   </head>
   <body>
