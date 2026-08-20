@@ -1,0 +1,15 @@
+---
+interface Props {
+  tagline?: string;
+}
+
+const { tagline } = Astro.props;
+---
+
+<header>
+  <h1>Couvoir</h1>
+
+  {tagline && <p>{tagline}</p>}
+
+  <p lang="fr">Pièce pour couver artificiellement des œufs.</p>
+</header>

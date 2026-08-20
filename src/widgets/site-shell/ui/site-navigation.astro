@@ -10,18 +10,19 @@ const currentLocale = locales.includes(Astro.currentLocale as Locale)
 const navigationLabel = currentLocale === "ko" ? "주요 메뉴" : "Primary";
 
 const links = [
-  { path: "", label: "Couvoir" },
-  { path: "playground", label: "Playground" },
-  { path: "me", label: "Me" },
-  { path: "blog", label: "Blog" },
+  { path: "playground", label: "playground" },
+  { path: "blog", label: "blog" },
+  { path: "me", label: "me" },
 ].map(({ path, label }) => ({
   href: getRelativeLocaleUrl(currentLocale, path),
   label,
 }));
 
+const homeHref = getRelativeLocaleUrl(currentLocale, "");
+
 const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
 const currentPath = normalizePath(Astro.url.pathname);
-const localeRoot = normalizePath(getRelativeLocaleUrl(currentLocale));
+const localeRoot = normalizePath(homeHref);
 
 const isCurrentPage = (href: string) => {
   const linkPath = normalizePath(href);
@@ -33,19 +34,13 @@ const isCurrentPage = (href: string) => {
 ---
 
 <nav aria-label={navigationLabel}>
-  <ul>
-    {
-      links.map(({ href, label }) => {
-        const isCurrent = isCurrentPage(href);
-
-        return (
-          <li>
-            <a href={href} aria-current={isCurrent ? "page" : undefined}>
-              {label}
-            </a>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <a href={homeHref} aria-current={isCurrentPage(homeHref) ? "page" : undefined}
+    >Couvoir</a
+  > = f{
+    links.map(({ href, label }) => (
+      <a href={href} aria-current={isCurrentPage(href) ? "page" : undefined}>
+        ({label})
+      </a>
+    ))
+  }
 </nav>
