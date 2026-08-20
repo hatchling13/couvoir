@@ -10,7 +10,7 @@ const currentLocale = locales.includes(Astro.currentLocale as Locale)
 const navigationLabel = currentLocale === "ko" ? "주요 메뉴" : "Primary";
 
 const links = [
-  { path: "playground", label: "playground" },
+  { path: "projects", label: "projects" },
   { path: "blog", label: "blog" },
   { path: "me", label: "me" },
 ].map(({ path, label }) => ({
