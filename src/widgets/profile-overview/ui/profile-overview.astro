@@ -1,0 +1,46 @@
+---
+interface Props {
+  name: string;
+  occupation: string;
+  contactsLabel: string;
+}
+
+const { name, occupation, contactsLabel } = Astro.props;
+
+const contacts = [
+  {
+    label: "Email",
+    href: "mailto:me@hatchling.dev",
+    content: "me@hatchling.dev",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/hatchling13",
+    content: "hatchling13",
+  },
+  {
+    label: "Bluesky",
+    href: "https://bsky.app/profile/hatchling.dev",
+    content: "@hatchling.dev",
+  },
+];
+---
+
+<header>
+  <h1>{name}</h1>
+  <p>{occupation}</p>
+
+  <address aria-label={contactsLabel}>
+    <ul>
+      {
+        contacts.map(({ label, href, content }) => (
+          <li>
+            <a href={href}>
+              {label}: {content}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </address>
+</header>

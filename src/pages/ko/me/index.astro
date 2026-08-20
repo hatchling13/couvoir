@@ -1,7 +1,17 @@
 ---
+import { ProfileOverview } from "@widgets/profile-overview";
 import { SiteShell } from "@widgets/site-shell";
 ---
 
-<SiteShell title="Me" description="이력과 자기소개.">
-  <h1>Me</h1>
+<SiteShell title="me = f(cv)" description="Cogito, ergo sum - René Descartes">
+  <ProfileOverview
+    name="박정욱"
+    occupation="소프트웨어 엔지니어"
+    contactsLabel="연락처"
+  />
+
+  <section aria-labelledby="cv-heading">
+    <h2 id="cv-heading">CV</h2>
+    <p>공사중입니다! 더 나은 모습으로 찾아뵐게요!</p>
+  </section>
 </SiteShell>
