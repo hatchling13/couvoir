@@ -12,6 +12,8 @@
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
+    "fmt:astro": "prettier --write \"src/**/*.astro\" --plugin=prettier-plugin-astro",
+    "fmt:astro:check": "prettier --check \"src/**/*.astro\" --plugin=prettier-plugin-astro",
     "check": "astro check && oxlint"
   },
   "dependencies": {
@@ -29,6 +31,8 @@
     "@pandacss/dev": "^1.12.0",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3"
   },
   "engines": {

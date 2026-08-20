@@ -1,10 +1,7 @@
 ---
 import { ArticleView, getArticleSlug, getArticles } from "@entities/article";
 import { SiteShell } from "@widgets/site-shell";
-import {
-  render,
-  type CollectionEntry,
-} from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const locale = "ko";

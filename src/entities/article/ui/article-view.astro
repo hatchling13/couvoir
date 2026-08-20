@@ -1,10 +1,6 @@
 ---
 import "katex/dist/katex.min.css";
-import {
-  dateLocales,
-  localeText,
-  type Locale,
-} from "@shared/config/i18n";
+import { dateLocales, localeText, type Locale } from "@shared/config/i18n";
 
 interface Props {
   title: string;
@@ -35,7 +31,9 @@ const text = localeText[locale];
     tags.length > 0 && (
       <footer>
         <ul aria-label={text.tags}>
-          {tags.map((tag) => <li>{tag}</li>)}
+          {tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
         </ul>
       </footer>
     )

@@ -13,7 +13,10 @@ const [posts, retrospects] = await Promise.all([
 const text = localeText[locale];
 ---
 
-<SiteShell title="Blog" description="Thoughts, retrospects, and software notes.">
+<SiteShell
+  title="Blog"
+  description="Thoughts, retrospects, and software notes."
+>
   <h1>Blog</h1>
   <ArticleSection
     title={text.posts}
