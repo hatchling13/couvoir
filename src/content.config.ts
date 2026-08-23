@@ -28,7 +28,31 @@ const retrospect = defineCollection({
   schema: articleSchema,
 });
 
+const project = defineCollection({
+  loader: glob({
+    base: "./content/project",
+    pattern: "**/*.md",
+  }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string().optional(),
+    draft: z.boolean().default(false),
+    status: z.enum(["experimental", "active", "maintained", "completed", "archived"]).optional(),
+    technologies: z.array(z.string()).default([]),
+    links: z
+      .array(
+        z.object({
+          kind: z.enum(["website", "repository", "package", "documentation", "other"]),
+          label: z.string().optional(),
+          url: z.url(),
+        }),
+      )
+      .default([]),
+  }),
+});
+
 export const collections = {
   post,
+  project,
   retrospect,
 };
