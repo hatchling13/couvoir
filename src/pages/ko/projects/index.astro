@@ -1,13 +1,17 @@
 ---
+import { getProjects } from "@entities/project";
+import { ProjectList } from "@widgets/project-list";
 import { SiteShell } from "@widgets/site-shell";
+
+const projects = await getProjects("ko");
+const description =
+  projects.map(({ data }) => data.summary ?? data.title).join(" · ") ||
+  "Projects";
 ---
 
-<SiteShell
-  title="Projects"
-  description="공사중입니다! 더 나은 모습으로 찾아붐게요!"
->
+<SiteShell title="Projects" description={description}>
   <section aria-labelledby="projects-heading">
     <h1 id="projects-heading">Projects</h1>
-    <p>공사중입니다! 더 나은 모습으로 찾아붐게요!</p>
+    <ProjectList projects={projects} locale="ko" />
   </section>
 </SiteShell>

@@ -2,6 +2,7 @@
 title: Gluegun
 summary: Expo 앱과 Unity 사이의 통신을 돕는 라이브러리
 draft: false
+order: 2
 status: experimental
 technologies:
   - TypeScript

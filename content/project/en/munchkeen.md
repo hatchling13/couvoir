@@ -2,6 +2,7 @@
 title: Munchkeen
 summary: Solid-first interactive graph exploration toolkit
 draft: false
+order: 1
 status: experimental
 technologies:
   - TypeScript

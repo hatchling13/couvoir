@@ -1,0 +1,119 @@
+---
+import type { Locale } from "@shared/config/i18n";
+import { render } from "astro:content";
+import type { ProjectCollectionEntry } from "../model/project";
+
+interface Props {
+  project: ProjectCollectionEntry;
+  locale: Locale;
+}
+
+type ProjectStatus = NonNullable<ProjectCollectionEntry["data"]["status"]>;
+type ProjectLinkKind = ProjectCollectionEntry["data"]["links"][number]["kind"];
+
+const projectText = {
+  ko: {
+    details: "자세히 보기",
+    body: "프로젝트 소개",
+    status: "상태",
+    technologies: "사용 기술",
+    links: "관련 링크",
+    statuses: {
+      experimental: "실험 단계",
+      active: "개발 중",
+      maintained: "유지 관리 중",
+      completed: "완료",
+      archived: "보관됨",
+    },
+    linkKinds: {
+      website: "웹사이트",
+      repository: "저장소",
+      package: "패키지",
+      documentation: "문서",
+      other: "관련 링크",
+    },
+  },
+  en: {
+    details: "Read more",
+    body: "Project description",
+    status: "Status",
+    technologies: "Technologies",
+    links: "Related links",
+    statuses: {
+      experimental: "Experimental",
+      active: "Active",
+      maintained: "Maintained",
+      completed: "Completed",
+      archived: "Archived",
+    },
+    linkKinds: {
+      website: "Website",
+      repository: "Repository",
+      package: "Package",
+      documentation: "Documentation",
+      other: "Related link",
+    },
+  },
+} as const satisfies Record<
+  Locale,
+  {
+    details: string;
+    body: string;
+    status: string;
+    technologies: string;
+    links: string;
+    statuses: Record<ProjectStatus, string>;
+    linkKinds: Record<ProjectLinkKind, string>;
+  }
+>;
+
+const { project, locale } = Astro.props;
+const { title, summary, status, technologies, links } = project.data;
+const { Content } = await render(project);
+const text = projectText[locale];
+---
+
+<li>
+  <article>
+    <header>
+      <h2>{title}</h2>
+      {summary && <p>{summary}</p>}
+      {
+        status && (
+          <p>
+            {text.status}: {text.statuses[status]}
+          </p>
+        )
+      }
+    </header>
+
+    {
+      technologies.length > 0 && (
+        <ul aria-label={text.technologies}>
+          {technologies.map((technology) => (
+            <li>{technology}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      links.length > 0 && (
+        <ul aria-label={text.links}>
+          {links.map(({ kind, label, url }) => (
+            <li>
+              <a href={url}>{label ?? text.linkKinds[kind]}</a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <details>
+      <summary>{text.details}</summary>
+      <section aria-label={text.body}>
+        <Content />
+      </section>
+    </details>
+  </article>
+</li>

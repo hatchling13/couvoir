@@ -37,6 +37,7 @@ const project = defineCollection({
     title: z.string(),
     summary: z.string().optional(),
     draft: z.boolean().default(false),
+    order: z.number().int().positive(),
     status: z.enum(["experimental", "active", "maintained", "completed", "archived"]).optional(),
     technologies: z.array(z.string()).default([]),
     links: z

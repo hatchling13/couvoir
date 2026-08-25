@@ -1,0 +1,28 @@
+---
+import { ProjectEntry, type ProjectCollectionEntry } from "@entities/project";
+import type { Locale } from "@shared/config/i18n";
+
+interface Props {
+  projects: ProjectCollectionEntry[];
+  locale: Locale;
+}
+
+const emptyText = {
+  ko: "아직 공개된 프로젝트가 없습니다.",
+  en: "No published projects yet.",
+} as const satisfies Record<Locale, string>;
+
+const { projects, locale } = Astro.props;
+---
+
+{
+  projects.length > 0 ? (
+    <ul>
+      {projects.map((project) => (
+        <ProjectEntry project={project} locale={locale} />
+      ))}
+    </ul>
+  ) : (
+    <p>{emptyText[locale]}</p>
+  )
+}
