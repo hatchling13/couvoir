@@ -1,10 +1,19 @@
 ---
 title: Munchkeen
-draft: true
+summary: Solid-first interactive graph exploration toolkit
+draft: false
 status: experimental
+technologies:
+  - TypeScript
+  - SolidJS
+  - Cytoscape.js
 links:
   - kind: website
     url: https://munchkeen.hatchling.dev
+  - kind: repository
+    url: https://github.com/hatchling13/munchkeen
+  - kind: package
+    url: https://www.npmjs.com/package/munchkeen
 ---
 
 ## Background

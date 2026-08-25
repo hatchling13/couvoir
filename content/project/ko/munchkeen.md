@@ -1,10 +1,19 @@
 ---
 title: Munchkeen
-draft: true
+summary: Solid 기반 인터랙티브 그래프 탐색 도구
+draft: false
 status: experimental
+technologies:
+  - TypeScript
+  - SolidJS
+  - Cytoscape.js
 links:
   - kind: website
     url: https://munchkeen.hatchling.dev
+  - kind: repository
+    url: https://github.com/hatchling13/munchkeen
+  - kind: package
+    url: https://www.npmjs.com/package/munchkeen
 ---
 
 ## 배경
