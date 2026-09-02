@@ -23,6 +23,11 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Local Impeccable tooling, hooks, prototypes, and session state
+/.agents/skills/impeccable/
+/.codex/hooks.json
+/.impeccable/
+
 ## Panda
 styled-system
 styled-system-studio

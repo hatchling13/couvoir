@@ -1,0 +1,41 @@
+---
+import type { Locale } from "@shared/config/i18n";
+import * as styles from "./gallery-preview.styles";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const note = {
+  ko: "구성 확인을 위한 자리표시자입니다. 실제 사진이 준비되기 전에는 공개 페이지에서 이 영역을 숨깁니다.",
+  en: "These placeholders exist to verify the composition. This section stays hidden on the public site until real photographs are ready.",
+} as const;
+---
+
+<section aria-labelledby="gallery-heading">
+  <header class={styles.header}>
+    <h2 class={styles.heading} id="gallery-heading">gallery</h2>
+    <p class={styles.label}>development-only</p>
+  </header>
+  <div class={styles.sheet}>
+    {
+      [1, 2, 3].map((index) => (
+        <figure class={styles.figure}>
+          <div
+            class={styles.photograph}
+            role="img"
+            aria-label={`Future photograph placeholder ${index}`}
+          >
+            {String(index).padStart(2, "0")}
+          </div>
+          <figcaption class={styles.caption}>
+            <span>description-not-written</span>
+            <span class={styles.date}>date-pending</span>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+  <p class={styles.note}>{note[locale]}</p>
+</section>

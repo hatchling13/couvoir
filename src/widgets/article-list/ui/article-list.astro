@@ -1,6 +1,7 @@
 ---
 import { ArticleEntry, type ArticleSummary } from "@entities/article";
 import { localeText, type Locale } from "@shared/config/i18n";
+import { articleList, emptyState } from "./article-list.styles";
 
 interface Props {
   articles: ArticleSummary[];
@@ -13,7 +14,7 @@ const { articles, locale, headingLevel = 2 } = Astro.props;
 
 {
   articles.length > 0 ? (
-    <ul>
+    <ol class={articleList}>
       {articles.map((article) => (
         <ArticleEntry
           {...article}
@@ -21,8 +22,8 @@ const { articles, locale, headingLevel = 2 } = Astro.props;
           headingLevel={headingLevel}
         />
       ))}
-    </ul>
+    </ol>
   ) : (
-    <p>{localeText[locale].empty}</p>
+    <p class={emptyState}>{localeText[locale].empty}</p>
   )
 }

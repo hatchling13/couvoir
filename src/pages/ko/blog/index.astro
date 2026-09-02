@@ -1,7 +1,11 @@
 ---
 import { getArticleSummaries } from "@entities/article";
-import { localeText } from "@shared/config/i18n";
-import { ArticleSection } from "@widgets/article-list";
+import { visuallyHidden } from "@shared/styles/common";
+import {
+  articleColumns,
+  ArticleNavigation,
+  ArticleSection,
+} from "@widgets/article-list";
 import { SiteShell } from "@widgets/site-shell";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
@@ -10,21 +14,30 @@ const [posts, retrospects] = await Promise.all([
   getArticleSummaries("post", locale),
   getArticleSummaries("retrospect", locale),
 ]);
-const text = localeText[locale];
+const availableCollections = [
+  ...(posts.length > 0 ? (["post"] as const) : []),
+  ...(retrospects.length > 0 ? (["retrospect"] as const) : []),
+];
 ---
 
 <SiteShell title="Blog" description="생각, 회고, 소프트웨어에 관한 글.">
-  <h1>Blog</h1>
-  <ArticleSection
-    title={text.posts}
-    articles={posts.slice(0, 4)}
-    moreHref={getRelativeLocaleUrl(locale, "blog/post/1")}
+  <h1 class={visuallyHidden}>blog</h1>
+  <ArticleNavigation
     locale={locale}
+    availableCollections={availableCollections}
   />
-  <ArticleSection
-    title={text.retrospects}
-    articles={retrospects.slice(0, 4)}
-    moreHref={getRelativeLocaleUrl(locale, "blog/retrospect/1")}
-    locale={locale}
-  />
+  <div class={articleColumns()}>
+    <ArticleSection
+      title="posts"
+      articles={posts.slice(0, 4)}
+      moreHref={getRelativeLocaleUrl(locale, "blog/post/1")}
+      locale={locale}
+    />
+    <ArticleSection
+      title="retrospects"
+      articles={retrospects.slice(0, 4)}
+      moreHref={getRelativeLocaleUrl(locale, "blog/retrospect/1")}
+      locale={locale}
+    />
+  </div>
 </SiteShell>

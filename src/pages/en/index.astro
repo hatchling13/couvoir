@@ -1,5 +1,8 @@
 ---
+import { pageBody } from "@shared/styles/common";
+import { GalleryPreview } from "@widgets/gallery-preview";
 import { HomeIntroduction } from "@widgets/home-introduction";
+import { InterestExplorer } from "@widgets/interest-explorer";
 import { SiteShell } from "@widgets/site-shell";
 ---
 
@@ -7,5 +10,13 @@ import { SiteShell } from "@widgets/site-shell";
   title="Couvoir"
   description="A little bit of this, a little bit of that"
 >
-  <HomeIntroduction />
+  <HomeIntroduction locale="en" />
+  <InterestExplorer label="Interests" quoteLabel="Quote not written yet" />
+  {
+    import.meta.env.DEV && (
+      <div class={pageBody}>
+        <GalleryPreview locale="en" />
+      </div>
+    )
+  }
 </SiteShell>

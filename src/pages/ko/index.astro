@@ -1,8 +1,19 @@
 ---
+import { pageBody } from "@shared/styles/common";
+import { GalleryPreview } from "@widgets/gallery-preview";
 import { HomeIntroduction } from "@widgets/home-introduction";
+import { InterestExplorer } from "@widgets/interest-explorer";
 import { SiteShell } from "@widgets/site-shell";
 ---
 
 <SiteShell title="Couvoir" description="그냥 뭐 이것저것">
-  <HomeIntroduction />
+  <HomeIntroduction locale="ko" />
+  <InterestExplorer label="관심사" quoteLabel="아직 작성되지 않은 인용문" />
+  {
+    import.meta.env.DEV && (
+      <div class={pageBody}>
+        <GalleryPreview locale="ko" />
+      </div>
+    )
+  }
 </SiteShell>

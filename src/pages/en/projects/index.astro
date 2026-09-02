@@ -1,5 +1,6 @@
 ---
 import { getProjects } from "@entities/project";
+import { pageHeading, pageTitle, pageMeta } from "@shared/styles/common";
 import { ProjectList } from "@widgets/project-list";
 import { SiteShell } from "@widgets/site-shell";
 
@@ -7,11 +8,15 @@ const projects = await getProjects("en");
 const description =
   projects.map(({ data }) => data.summary ?? data.title).join(" · ") ||
   "Projects";
+const projectCount = `${projects.length} ${projects.length === 1 ? "experiment" : "experiments"}`;
 ---
 
 <SiteShell title="Projects" description={description}>
   <section aria-labelledby="projects-heading">
-    <h1 id="projects-heading">Projects</h1>
+    <header class={pageHeading}>
+      <h1 class={pageTitle} id="projects-heading">projects</h1>
+      <p class={pageMeta}>{projectCount}</p>
+    </header>
     <ProjectList projects={projects} locale="en" />
   </section>
 </SiteShell>

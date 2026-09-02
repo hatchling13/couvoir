@@ -1,4 +1,7 @@
 ---
+import { css } from "@styled-system/css";
+import * as styles from "./profile-overview.styles";
+
 interface Props {
   name: string;
   occupation: string;
@@ -26,21 +29,23 @@ const contacts = [
 ];
 ---
 
-<header>
-  <h1>{name}</h1>
-  <p>{occupation}</p>
-
-  <address aria-label={contactsLabel}>
-    <ul>
+<section class={styles.profile} aria-labelledby="profile-heading">
+  <header>
+    <h1 class={styles.name} id="profile-heading">{name}</h1>
+    <p class={styles.role}>{occupation}</p>
+  </header>
+  <address class={css({ fontStyle: "normal" })} aria-label={contactsLabel}>
+    <ul class={styles.contacts}>
       {
         contacts.map(({ label, href, content }) => (
-          <li>
-            <a href={href}>
-              {label}: {content}
+          <li class={styles.contact}>
+            <span class={styles.label}>{label.toLowerCase()}</span>
+            <a class={styles.link} href={href}>
+              {content}
             </a>
           </li>
         ))
       }
     </ul>
   </address>
-</header>
+</section>

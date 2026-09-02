@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import * as styles from "./site-navigation.styles";
 
 const locales = ["ko", "en"] as const;
 type Locale = (typeof locales)[number];
@@ -31,15 +32,30 @@ const isCurrentPage = (href: string) => {
     ? currentPath === localeRoot
     : currentPath === linkPath || currentPath.startsWith(`${linkPath}/`);
 };
+const hasActiveSection = links.some(({ href }) => isCurrentPage(href));
 ---
 
-<nav aria-label={navigationLabel}>
-  <a href={homeHref} aria-current={isCurrentPage(homeHref) ? "page" : undefined}
-    >Couvoir</a
-  > = f{
+<nav class={styles.navigation} aria-label={navigationLabel}>
+  <a
+    class={styles.brand}
+    href={homeHref}
+    aria-current={isCurrentPage(homeHref) ? "page" : undefined}>Couvoir</a
+  >
+  <span class={styles.notation} aria-hidden="true">
+    <span>=</span>
+    <span>𝑓</span>
+  </span>
+  {
     links.map(({ href, label }) => (
-      <a href={href} aria-current={isCurrentPage(href) ? "page" : undefined}>
-        ({label})
+      <a
+        class={styles.route}
+        data-dimmed={String(hasActiveSection && !isCurrentPage(href))}
+        href={href}
+        aria-current={isCurrentPage(href) ? "page" : undefined}
+      >
+        <span aria-hidden="true">(</span>
+        <span>{label}</span>
+        <span aria-hidden="true">)</span>
       </a>
     ))
   }

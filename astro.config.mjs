@@ -1,9 +1,10 @@
 // @ts-check
-import { unified } from "@astrojs/markdown-remark";
+import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import rehypeShiftHeading from "rehype-shift-heading";
 import remarkMath from "remark-math";
+import { rehypeProjectHeadingIds } from "./src/entities/project/lib/rehype-project-heading-ids.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +23,8 @@ export default defineConfig({
       rehypePlugins: [
         [rehypeKatex, { strict: true }],
         [rehypeShiftHeading, { shift: 1 }],
+        rehypeHeadingIds,
+        [rehypeProjectHeadingIds, { directory: new URL("./content/project/", import.meta.url) }],
       ],
     }),
   },

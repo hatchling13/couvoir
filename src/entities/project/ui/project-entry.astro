@@ -2,6 +2,7 @@
 import type { Locale } from "@shared/config/i18n";
 import { render } from "astro:content";
 import type { ProjectCollectionEntry } from "../model/project";
+import * as styles from "./project-entry.styles";
 
 interface Props {
   project: ProjectCollectionEntry;
@@ -73,25 +74,22 @@ const { Content } = await render(project);
 const text = projectText[locale];
 ---
 
-<li>
-  <article>
-    <header>
-      <h2>{title}</h2>
-      {summary && <p>{summary}</p>}
-      {
-        status && (
-          <p>
-            {text.status}: {text.statuses[status]}
-          </p>
-        )
-      }
-    </header>
+<details class={styles.project}>
+  <summary class={styles.summary} aria-label={`${title}: ${text.details}`}>
+    <span class={styles.title}>{title}</span>
+    {summary && <span class={styles.summaryText}>{summary}</span>}
+    {status && <span class={styles.status}>{status}</span>}
+  </summary>
+  <div class={styles.body}>
+    <section class={styles.copy} aria-label={text.body}>
+      <Content />
+    </section>
 
     {
       technologies.length > 0 && (
-        <ul aria-label={text.technologies}>
+        <ul class={styles.meta} aria-label={text.technologies}>
           {technologies.map((technology) => (
-            <li>{technology}</li>
+            <li class={styles.technology}>{technology}</li>
           ))}
         </ul>
       )
@@ -99,21 +97,14 @@ const text = projectText[locale];
 
     {
       links.length > 0 && (
-        <ul aria-label={text.links}>
+        <nav class={styles.links} aria-label={text.links}>
           {links.map(({ kind, label, url }) => (
-            <li>
-              <a href={url}>{label ?? text.linkKinds[kind]}</a>
-            </li>
+            <a class={styles.link} href={url} target="_blank" rel="noreferrer">
+              {label ?? text.linkKinds[kind]}
+            </a>
           ))}
-        </ul>
+        </nav>
       )
     }
-
-    <details>
-      <summary>{text.details}</summary>
-      <section aria-label={text.body}>
-        <Content />
-      </section>
-    </details>
-  </article>
-</li>
+  </div>
+</details>

@@ -1,15 +1,57 @@
 ---
+import type { Locale } from "@shared/config/i18n";
+import { css } from "@styled-system/css";
+
 interface Props {
-  tagline?: string;
+  locale: Locale;
 }
 
-const { tagline } = Astro.props;
+const { locale } = Astro.props;
+const introduction = {
+  ko: {
+    tagline: "그냥 뭐 이것저것",
+    translation: "A little bit of this, a little bit of that",
+    translationLanguage: "en",
+  },
+  en: {
+    tagline: "A little bit of this, a little bit of that",
+    translation: "그냥 뭐 이것저것",
+    translationLanguage: "ko",
+  },
+} as const;
+
+const text = introduction[locale];
 ---
 
-<header>
-  <h1>Couvoir</h1>
-
-  {tagline && <p>{tagline}</p>}
-
-  <p lang="fr">Pièce pour couver artificiellement des œufs.</p>
-</header>
+<section
+  class={css({
+    maxWidth: "2xl",
+    marginBottom: "clamp(token(spacing.12), 7vw, token(spacing.20))",
+  })}
+  aria-labelledby="introduction-heading"
+>
+  <h1
+    class={css({
+      margin: "0",
+      fontSize: "clamp(token(fontSizes.2xl), 3vw, token(fontSizes.4xl))",
+      fontWeight: "semibold",
+      letterSpacing: "tight",
+      lineHeight: "tight",
+    })}
+    id="introduction-heading"
+  >
+    {text.tagline}
+  </h1>
+  <p
+    class={css({
+      marginTop: "3",
+      marginX: "0",
+      marginBottom: "0",
+      color: "muted",
+      fontSize: "md",
+    })}
+    lang={text.translationLanguage}
+  >
+    {text.translation}
+  </p>
+</section>

@@ -1,7 +1,13 @@
 ---
 import { getArticleSummaries, type ArticleSummary } from "@entities/article";
 import { localeText } from "@shared/config/i18n";
-import { ArticleList, ArticlePagination } from "@widgets/article-list";
+import { visuallyHidden } from "@shared/styles/common";
+import {
+  articleColumns,
+  ArticleNavigation,
+  ArticlePagination,
+  ArticleSection,
+} from "@widgets/article-list";
 import { SiteShell } from "@widgets/site-shell";
 import type { GetStaticPaths, Page } from "astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -10,7 +16,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const locale = "en";
   const articles = await getArticleSummaries("post", locale);
 
-  return paginate(articles, { pageSize: 4 });
+  return articles.length > 0 ? paginate(articles, { pageSize: 8 }) : [];
 }) satisfies GetStaticPaths;
 
 const locale = "en";
@@ -24,12 +30,25 @@ const text = localeText[locale];
 ---
 
 <SiteShell title={text.posts} description="Post archive.">
-  <h1>{text.posts}</h1>
-  <ArticleList articles={page.data} locale={locale} />
-  <ArticlePagination
-    currentPage={page.currentPage}
-    lastPage={page.lastPage}
-    basePath={getRelativeLocaleUrl(locale, "blog/post")}
+  <h1 class={visuallyHidden}>blog — posts</h1>
+  <ArticleNavigation
     locale={locale}
+    activeCollection="post"
+    availableCollections={["post"]}
   />
+  <div class={articleColumns({ single: true })}>
+    <ArticleSection
+      title="posts"
+      articles={page.data}
+      totalCount={page.total}
+      locale={locale}
+    >
+      <ArticlePagination
+        currentPage={page.currentPage}
+        lastPage={page.lastPage}
+        basePath={getRelativeLocaleUrl(locale, "blog/post")}
+        locale={locale}
+      />
+    </ArticleSection>
+  </div>
 </SiteShell>

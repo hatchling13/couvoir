@@ -1,8 +1,23 @@
-<footer>
-  <p>
-    Special thanks to <a href="https://lute.fantazm.net/dye">지염도서관</a>,{
-      " "
-    }
-    <a href="https://crepe.cm/@naega_haenaem_">내가해냄</a>!
+---
+import { identity } from "./site-shell.styles";
+import { css } from "@styled-system/css";
+---
+
+<footer class={identity}>
+  <p class={css({ margin: "0" })} lang="fr">
+    Pièce pour couver artificiellement des œufs.
+  </p>
+  <p class={css({ margin: "0", fontSize: "xs" })} lang="en">
+    Special thanks to{" "}
+    <a
+      class={css({
+        textDecoration: "underline",
+        textDecorationColor: "rule",
+        textUnderlineOffset: "token(spacing.1)",
+        _hover: { textDecorationColor: "ink" },
+      })}
+      href="https://crepe.cm/@naega_haenaem_"
+      lang="ko">내가해냄</a
+    >!
   </p>
 </footer>

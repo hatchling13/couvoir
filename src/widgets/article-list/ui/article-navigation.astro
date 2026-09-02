@@ -1,0 +1,108 @@
+---
+import type { ArticleCollection } from "@entities/article";
+import type { Locale } from "@shared/config/i18n";
+import * as styles from "@shared/styles/expression";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  locale: Locale;
+  activeCollection?: ArticleCollection;
+  availableCollections?: ArticleCollection[];
+}
+
+const {
+  locale,
+  activeCollection,
+  availableCollections = ["post", "retrospect"],
+} = Astro.props;
+const arguments_ = [
+  {
+    collection: "post" as const,
+    label: "posts",
+    href: getRelativeLocaleUrl(locale, "blog/post/1"),
+  },
+  {
+    collection: "retrospect" as const,
+    label: "retrospects",
+    href: getRelativeLocaleUrl(locale, "blog/retrospect/1"),
+  },
+];
+---
+
+<section
+  class={styles.region}
+  aria-label={locale === "ko" ? "블로그 분류" : "Blog categories"}
+>
+  <div class={styles.stack}>
+    <div class={styles.row}>
+      <span class={styles.subject}>blog</span>
+      <span class={styles.operator}>=</span>
+      <div class={styles.application}>
+        <span class={styles.applicationStart}>
+          <span class={styles.operator} aria-label="b">𝑏</span>
+          {
+            arguments_.slice(0, 1).map(({ collection, label, href }) =>
+              availableCollections.includes(collection) ? (
+                <a
+                  class={styles.argument}
+                  href={href}
+                  data-dimmed={String(
+                    Boolean(activeCollection) &&
+                      activeCollection !== collection,
+                  )}
+                  aria-current={
+                    activeCollection === collection ? "page" : undefined
+                  }
+                >
+                  <>
+                    <span aria-hidden="true">(</span>
+                    <span>{label}</span>
+                    <span aria-hidden="true">)</span>
+                  </>
+                </a>
+              ) : (
+                <span class={styles.argument} aria-disabled="true">
+                  <>
+                    <span aria-hidden="true">(</span>
+                    <span>{label}</span>
+                    <span aria-hidden="true">)</span>
+                  </>
+                </span>
+              ),
+            )
+          }
+        </span>
+        {
+          arguments_.slice(1).map(({ collection, label, href }) =>
+            availableCollections.includes(collection) ? (
+              <a
+                class={styles.argument}
+                href={href}
+                data-dimmed={String(
+                  Boolean(activeCollection) && activeCollection !== collection,
+                )}
+                aria-current={
+                  activeCollection === collection ? "page" : undefined
+                }
+              >
+                <>
+                  <span aria-hidden="true">(</span>
+                  <span>{label}</span>
+                  <span aria-hidden="true">)</span>
+                </>
+              </a>
+            ) : (
+              <span class={styles.argument} aria-disabled="true">
+                <>
+                  <span aria-hidden="true">(</span>
+                  <span>{label}</span>
+                  <span aria-hidden="true">)</span>
+                </>
+              </span>
+            ),
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,20 +1,38 @@
 ---
 import type { ArticleSummary } from "@entities/article";
-import { localeText, type Locale } from "@shared/config/i18n";
+import type { Locale } from "@shared/config/i18n";
 import ArticleList from "./article-list.astro";
+import {
+  archiveLink,
+  articleCount,
+  sectionHeader,
+  sectionHeading,
+} from "./article-section.styles";
 
 interface Props {
   title: string;
   articles: ArticleSummary[];
-  moreHref: string;
+  moreHref?: string;
+  totalCount?: number;
   locale: Locale;
 }
 
-const { title, articles, moreHref, locale } = Astro.props;
+const { title, articles, moreHref, totalCount, locale } = Astro.props;
 ---
 
-<section>
-  <h2>{title}</h2>
+<section aria-labelledby={`${title}-heading`}>
+  <header class={sectionHeader}>
+    <h2 class={sectionHeading} id={`${title}-heading`}>{title}</h2>
+    {
+      moreHref && articles.length > 0 ? (
+        <a class={archiveLink} href={moreHref}>
+          archive
+        </a>
+      ) : totalCount !== undefined ? (
+        <span class={articleCount}>{totalCount} entries</span>
+      ) : null
+    }
+  </header>
   <ArticleList articles={articles} locale={locale} headingLevel={3} />
-  {articles.length > 0 && <a href={moreHref}>{localeText[locale].more}</a>}
+  <slot />
 </section>

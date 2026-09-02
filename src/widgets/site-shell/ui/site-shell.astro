@@ -3,6 +3,7 @@ import { getLocale } from "@shared/config/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import SiteFooter from "./site-footer.astro";
 import SiteNavigation from "./site-navigation.astro";
+import { masthead, siteMain, sitePage, skipLink } from "./site-shell.styles";
 import "@shared/styles/global.css";
 
 interface Props {
@@ -15,6 +16,7 @@ const { title, description } = Astro.props;
 const siteName = "Couvoir";
 const documentTitle = title === siteName ? title : `${title} | ${siteName}`;
 const locale = getLocale(Astro.currentLocale);
+const skipLabel = locale === "ko" ? "본문으로 건너뛰기" : "Skip to content";
 ---
 
 <html lang={locale}>
@@ -34,10 +36,15 @@ const locale = getLocale(Astro.currentLocale);
     <title>{documentTitle}</title>
   </head>
   <body>
-    <SiteNavigation />
-    <main>
-      <slot />
-    </main>
-    <SiteFooter />
+    <a class={skipLink} href="#main-content">{skipLabel}</a>
+    <div class={sitePage}>
+      <header class={masthead}>
+        <SiteNavigation />
+      </header>
+      <main class={siteMain} id="main-content">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
   </body>
 </html>

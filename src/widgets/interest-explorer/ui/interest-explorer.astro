@@ -1,0 +1,239 @@
+---
+import * as styles from "@shared/styles/expression";
+
+interface ExpressionNode {
+  label: string;
+  functionName?: string;
+  children?: ExpressionNode[];
+}
+
+interface Props {
+  label: string;
+  quoteLabel: string;
+}
+
+const { label, quoteLabel } = Astro.props;
+
+const tree: ExpressionNode = {
+  label: "interests",
+  functionName: "i",
+  children: [
+    {
+      label: "software",
+      functionName: "s",
+      children: [
+        { label: "functional-programming" },
+        { label: "user-interface" },
+        { label: "effect-systems" },
+        { label: "type-systems" },
+      ],
+    },
+    {
+      label: "personal",
+      functionName: "p",
+      children: [{ label: "gastronomy" }, { label: "games" }],
+    },
+  ],
+};
+---
+
+<couvoir-expression
+  class={styles.region}
+  data-tree={JSON.stringify(tree)}
+  data-quote-label={quoteLabel}
+  aria-label={label}
+>
+  <div class={styles.stack} data-expression-stack aria-live="polite">
+    <div class={styles.row}>
+      <span class={styles.subject}>interests</span>
+      <span class={styles.operator}>=</span>
+      <div class={styles.application}>
+        <span class={styles.applicationStart}>
+          <span class={styles.operator} aria-label="i">𝑖</span>
+          <button class={styles.argument} type="button" aria-pressed="false">
+            <span aria-hidden="true">(</span><span>software</span><span
+              aria-hidden="true">)</span
+            >
+          </button>
+        </span>
+        <button class={styles.argument} type="button" aria-pressed="false">
+          <span aria-hidden="true">(</span><span>personal</span><span
+            aria-hidden="true">)</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</couvoir-expression>
+
+<script>
+  import { cx } from "@styled-system/css";
+  import * as styles from "@shared/styles/expression";
+
+  interface ExpressionNode {
+    label: string;
+    functionName?: string;
+    children?: ExpressionNode[];
+  }
+
+  const mathematicalItalic: Record<string, string> = {
+    i: "𝑖",
+    p: "𝑝",
+    s: "𝑠",
+  };
+
+  class CouvoirExpression extends HTMLElement {
+    private tree: ExpressionNode | null = null;
+    private selectedPath: string[] = [];
+    private enteringDepth: number | null = null;
+    private stack: HTMLElement | null = null;
+
+    connectedCallback() {
+      const source = this.dataset.tree;
+      this.stack = this.querySelector<HTMLElement>("[data-expression-stack]");
+
+      if (!source || !this.stack) return;
+
+      this.tree = JSON.parse(source) as ExpressionNode;
+      this.renderExpression();
+    }
+
+    private createArgument(
+      node: ExpressionNode,
+      depth: number,
+      selectedLabel?: string,
+    ) {
+      const button = document.createElement("button");
+      const openingParenthesis = document.createElement("span");
+      const label = document.createElement("span");
+      const closingParenthesis = document.createElement("span");
+      const selected = node.label === selectedLabel;
+
+      button.className = styles.argument;
+      button.type = "button";
+      button.dataset.depth = String(depth);
+      button.dataset.label = node.label;
+      button.dataset.dimmed = String(Boolean(selectedLabel) && !selected);
+      button.setAttribute("aria-label", `(${node.label})`);
+      button.setAttribute("aria-pressed", String(selected));
+      openingParenthesis.setAttribute("aria-hidden", "true");
+      openingParenthesis.textContent = "(";
+      label.textContent = node.label;
+      closingParenthesis.setAttribute("aria-hidden", "true");
+      closingParenthesis.textContent = ")";
+      button.append(openingParenthesis, label, closingParenthesis);
+
+      button.addEventListener("click", () => {
+        this.enteringDepth = selected ? null : depth + 1;
+        this.selectedPath = selected
+          ? this.selectedPath.slice(0, depth)
+          : [...this.selectedPath.slice(0, depth), node.label];
+
+        this.renderExpression();
+        this.querySelectorAll<HTMLButtonElement>("button[data-depth]").forEach(
+          (candidate) => {
+            if (
+              candidate.dataset.depth === String(depth) &&
+              candidate.dataset.label === node.label
+            ) {
+              candidate.focus({ preventScroll: true });
+            }
+          },
+        );
+      });
+
+      return button;
+    }
+
+    private createExpression(node: ExpressionNode, depth: number) {
+      const row = document.createElement("div");
+      const subject = document.createElement("span");
+      const equals = document.createElement("span");
+      const application = document.createElement("div");
+      const start = document.createElement("span");
+      const functionName = document.createElement("span");
+      const selectedLabel = this.selectedPath[depth];
+      const children = node.children ?? [];
+      const entering = depth === this.enteringDepth;
+
+      row.className = styles.row;
+      subject.className = cx(styles.subject, entering && styles.reveal);
+      subject.textContent = node.label;
+      equals.className = cx(styles.operator, entering && styles.reveal);
+      equals.textContent = "=";
+      application.className = cx(styles.application, entering && styles.reveal);
+      start.className = styles.applicationStart;
+      functionName.className = styles.operator;
+      functionName.textContent =
+        mathematicalItalic[node.functionName ?? ""] ?? node.functionName ?? "";
+      functionName.setAttribute("aria-label", node.functionName ?? "");
+
+      if (children[0]) {
+        start.append(
+          functionName,
+          this.createArgument(children[0], depth, selectedLabel),
+        );
+        application.append(start);
+      }
+
+      for (const child of children.slice(1)) {
+        application.append(this.createArgument(child, depth, selectedLabel));
+      }
+
+      row.append(subject, equals, application);
+      return row;
+    }
+
+    private createLeaf(label: string, depth: number) {
+      const leaf = document.createElement("section");
+      const name = document.createElement("p");
+      const quote = document.createElement("blockquote");
+      const content = document.createElement("p");
+      const entering = depth === this.enteringDepth;
+
+      leaf.className = styles.leaf;
+      name.className = cx(styles.leafName, entering && styles.reveal);
+      name.textContent = label;
+      quote.className = cx(styles.quote, entering && styles.revealQuote);
+      quote.setAttribute("aria-label", this.dataset.quoteLabel ?? "Quote");
+      content.className = styles.quoteContent;
+      content.textContent = "…";
+
+      quote.append(content);
+      leaf.append(name, quote);
+      return leaf;
+    }
+
+    private renderExpression() {
+      if (!this.tree || !this.stack) return;
+
+      this.stack.replaceChildren();
+
+      let node = this.tree;
+      let depth = 0;
+
+      while (node.children) {
+        this.stack.append(this.createExpression(node, depth));
+
+        const next = node.children.find(
+          (child) => child.label === this.selectedPath[depth],
+        );
+        if (!next) break;
+
+        if (!next.children) {
+          this.stack.append(this.createLeaf(next.label, depth + 1));
+          break;
+        }
+
+        node = next;
+        depth += 1;
+      }
+
+      this.enteringDepth = null;
+    }
+  }
+
+  if (!customElements.get("couvoir-expression")) {
+    customElements.define("couvoir-expression", CouvoirExpression);
+  }
+</script>

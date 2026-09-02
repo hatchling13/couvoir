@@ -1,5 +1,6 @@
 ---
 import { localeText, type Locale } from "@shared/config/i18n";
+import * as styles from "./article-pagination.styles";
 
 interface Props {
   currentPage: number;
@@ -17,23 +18,43 @@ const pageHref = (page: number) => `${normalizedBasePath}/${page}`;
 
 {
   lastPage > 1 && (
-    <nav aria-label={text.pagination}>
-      {currentPage > 1 && (
-        <a href={pageHref(currentPage - 1)}>{text.previousPage}</a>
+    <nav class={styles.pagination} aria-label={text.pagination}>
+      {currentPage > 1 ? (
+        <a
+          class={styles.link}
+          href={pageHref(currentPage - 1)}
+          aria-label={text.previousPage}
+        >
+          previous
+        </a>
+      ) : (
+        <span class={styles.placeholder}>previous</span>
       )}
-      <ol>
+      <ol class={styles.pages}>
         {pageNumbers.map((page) => (
           <li>
             {page === currentPage ? (
-              <span aria-current="page">{page}</span>
+              <span class={styles.current} aria-current="page">
+                {String(page).padStart(2, "0")}
+              </span>
             ) : (
-              <a href={pageHref(page)}>{page}</a>
+              <a class={styles.link} href={pageHref(page)}>
+                {String(page).padStart(2, "0")}
+              </a>
             )}
           </li>
         ))}
       </ol>
-      {currentPage < lastPage && (
-        <a href={pageHref(currentPage + 1)}>{text.nextPage}</a>
+      {currentPage < lastPage ? (
+        <a
+          class:list={[styles.link, styles.next]}
+          href={pageHref(currentPage + 1)}
+          aria-label={text.nextPage}
+        >
+          next
+        </a>
+      ) : (
+        <span class:list={[styles.next, styles.placeholder]}>next</span>
       )}
     </nav>
   )

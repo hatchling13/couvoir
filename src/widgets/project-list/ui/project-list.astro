@@ -1,6 +1,7 @@
 ---
 import { ProjectEntry, type ProjectCollectionEntry } from "@entities/project";
 import type { Locale } from "@shared/config/i18n";
+import { emptyState, projectList } from "./project-list.styles";
 
 interface Props {
   projects: ProjectCollectionEntry[];
@@ -17,12 +18,12 @@ const { projects, locale } = Astro.props;
 
 {
   projects.length > 0 ? (
-    <ul>
+    <div class={projectList}>
       {projects.map((project) => (
         <ProjectEntry project={project} locale={locale} />
       ))}
-    </ul>
+    </div>
   ) : (
-    <p>{emptyText[locale]}</p>
+    <p class={emptyState}>{emptyText[locale]}</p>
   )
 }
