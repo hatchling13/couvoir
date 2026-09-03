@@ -6,6 +6,7 @@
     "prepare": "panda codegen",
     "dev": "astro dev --background",
     "build": "astro build",
+    "deploy": "wrangler deploy",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "oxlint",
