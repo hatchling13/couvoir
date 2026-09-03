@@ -8,7 +8,7 @@ import { rehypeProjectHeadingIds } from "./src/entities/project/lib/rehype-proje
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.hatchling.dev",
+  site: "https://hatchling.dev",
   i18n: {
     locales: ["ko", "en"],
     defaultLocale: "ko",
