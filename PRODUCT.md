@@ -36,10 +36,8 @@ Visitors can explore the localized homepage, Projects, Blog, and Me sections in
 Korean or English. Korean is the default locale, and localized RSS feeds support
 following published writing.
 
-The Me pages currently provide localized profile and contact information.
-CV or résumé content and any print-friendly presentation remain postponed until
-the rest of the website is settled and their content has been discussed
-separately.
+The Me pages provide localized profile and contact information and link to a
+localized, print-friendly CV at `/ko/me/cv/` and `/en/me/cv/`.
 
 ## Capabilities and Constraints
 
@@ -61,6 +59,7 @@ separately.
   the localized Projects pages. Preserve native `<details>` for expandable
   descriptions; do not introduce separate project detail routes.
 - Do not add Couvoir itself, Yigil Log, or ShareRoutine as portfolio projects.
+- Keep Munchkeen and Gluegun on Projects rather than repeating them in the CV.
 - The palette, typography, and interaction direction have been established
   collaboratively. Preserve the decisions below; implementation conventions
   are recorded in `docs/styling.md`.
@@ -91,7 +90,9 @@ separately.
   development-only placeholder and stays out of production until photographs
   and their content are ready.
 - Keep Projects as native expandable entries, Blog as a compact index with
-  paginated archives, and Me as profile/contact information pending résumé work.
+  paginated archives, and Me as concise profile/contact information linked to a
+  CV child route. The CV uses a narrow label column beside a wider reading
+  column and removes site chrome when printed.
   Center constrained article and archive containers while keeping text
   left-aligned.
 - Place the footer definition and acknowledgement on one baseline at opposite
@@ -158,5 +159,5 @@ Confirmed personal interests:
 3. Keep Korean and English experiences available without implying content exists
    in a language when it does not.
 4. Preserve the approved scope and honest experimental status of both projects.
-5. Separate durable product truth from unapproved visual direction,
-   public-facing copy, and postponed résumé decisions.
+5. Separate durable product truth from unapproved visual direction and
+   public-facing copy.

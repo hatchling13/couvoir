@@ -7,8 +7,11 @@ export const profile = css({
   gap: "clamp(token(spacing.12), 9vw, token(spacing.28))",
   _compact: {
     gridTemplateColumns: "1fr",
+    gap: "10",
   },
 });
+
+export const details = css({ minWidth: "0" });
 
 export const name = css({
   margin: "0",
@@ -32,7 +35,7 @@ export const contacts = css({
 
 export const contact = css({
   display: "grid",
-  gridTemplateColumns: "token(sizes.20) minmax(0, 1fr)",
+  gridTemplateColumns: "token(sizes.24) minmax(0, 1fr)",
   paddingY: "4",
   paddingX: "0",
   borderBottom: "rule",
@@ -42,6 +45,7 @@ export const contact = css({
 export const label = css({
   color: "muted",
   fontSize: "sm",
+  whiteSpace: "nowrap",
 });
 
 export const link = css({
@@ -49,6 +53,27 @@ export const link = css({
   color: "ink",
   textDecorationColor: "rule",
   textUnderlineOffset: "token(spacing.1)",
+  _hover: {
+    textDecorationColor: "ink",
+  },
+});
+
+export const document = css({
+  display: "grid",
+  gridTemplateColumns: "token(sizes.24) minmax(0, 1fr)",
+  paddingY: "4",
+  paddingX: "0",
+  borderBottom: "emphasis",
+  columnGap: "5",
+});
+
+export const documentName = css({
+  width: "fit-content",
+  color: "ink",
+  textDecoration: "underline",
+  textDecorationColor: "rule",
+  textUnderlineOffset: "token(spacing.1)",
+  whiteSpace: "nowrap",
   _hover: {
     textDecorationColor: "ink",
   },

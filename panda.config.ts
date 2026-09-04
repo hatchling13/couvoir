@@ -84,6 +84,7 @@ export default defineConfig({
       fontSynthesis: "none",
       textRendering: "optimizeLegibility",
       WebkitFontSmoothing: "antialiased",
+      _print: { minWidth: "0" },
     },
     body: {
       minWidth: "80",
@@ -91,6 +92,10 @@ export default defineConfig({
       margin: "0",
       background: "paper",
       color: "ink",
+      _print: {
+        minWidth: "0",
+        minHeight: "auto",
+      },
     },
     "button, input, textarea, select": {
       font: "inherit",
@@ -111,6 +116,10 @@ export default defineConfig({
     "::selection": {
       background: "rule",
       color: "ink",
+    },
+    "@page": {
+      size: "A4",
+      margin: "14mm",
     },
   },
   outdir: "styled-system",

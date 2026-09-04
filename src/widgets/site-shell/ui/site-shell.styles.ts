@@ -28,6 +28,11 @@ export const sitePage = css({
     paddingRight: "6",
     paddingLeft: "6",
   },
+  _print: {
+    minHeight: "auto",
+    maxWidth: "none",
+    padding: "0",
+  },
 });
 
 export const masthead = css({
@@ -36,6 +41,7 @@ export const masthead = css({
   paddingBottom: "6",
   borderBottom: "rule",
   _compact: { overflowX: "auto" },
+  _print: { display: "none" },
 });
 
 export const siteMain = css({
@@ -44,6 +50,7 @@ export const siteMain = css({
   paddingX: "0",
   paddingBottom: "clamp(token(spacing.24), 14vw, token(spacing.36))",
   _compact: { paddingTop: "14" },
+  _print: { padding: "0" },
 });
 
 export const identity = css({
@@ -60,4 +67,5 @@ export const identity = css({
   color: "muted",
   fontSize: "sm",
   lineHeight: "relaxed",
+  _print: { display: "none" },
 });

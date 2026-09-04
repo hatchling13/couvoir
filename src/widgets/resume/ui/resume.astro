@@ -1,0 +1,220 @@
+---
+import type { Locale } from "@shared/config/i18n";
+import { resumeContent } from "../model/resume-content";
+import ResumeReferenceLinks from "./resume-reference-links.astro";
+import * as styles from "./resume.styles";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const content = resumeContent[locale];
+---
+
+<article class={styles.resume} aria-labelledby="resume-name">
+  <header class={styles.resumeHeader}>
+    <div>
+      <h1 class={styles.name} id="resume-name">{content.name}</h1>
+      <p class={styles.role}>{content.role}</p>
+    </div>
+    <div class={styles.headerDetails}>
+      <address class={styles.contacts}>
+        {
+          content.contacts.map((contact) => (
+            <div class={styles.contactRow}>
+              <span class={styles.contactLabel}>{contact.label}</span>
+              <a class={styles.contactLink} href={contact.href}>
+                {contact.value}
+              </a>
+            </div>
+          ))
+        }
+      </address>
+      <button class={styles.printButton} type="button" data-print-resume>
+        {content.printLabel}
+      </button>
+    </div>
+  </header>
+
+  <section class={styles.section} aria-labelledby="profile-heading">
+    <h2 class={styles.sectionLabel} id="profile-heading">
+      {content.sectionLabels.profile}
+    </h2>
+    <p class={styles.summary}>{content.description}</p>
+  </section>
+
+  <section class={styles.section} aria-labelledby="experience-heading">
+    <h2 class={styles.sectionLabel} id="experience-heading">
+      {content.sectionLabels.experience}
+    </h2>
+    <div class={styles.sectionBody}>
+      <div class={styles.entryHeading}>
+        <div>
+          <h3 class={styles.entryTitle}>
+            <a class={styles.titleLink} href={content.experience.companyHref}>
+              {content.experience.company}
+            </a>
+          </h3>
+          <p class={styles.entrySubtitle}>{content.experience.role}</p>
+        </div>
+        <p class={styles.period}>{content.experience.period}</p>
+      </div>
+
+      <div class={styles.workGroupList}>
+        {
+          content.experience.groups.map((group, index) => (
+            <section
+              class:list={[
+                styles.workGroup,
+                index > 0 && styles.dividedWorkGroup,
+              ]}
+            >
+              <h4 class={styles.minorHeading}>{group.label}</h4>
+              <div class={styles.projectList}>
+                {group.projects.map((project) => (
+                  <section class={styles.project}>
+                    <div class={styles.subentryHeading}>
+                      <h5 class={styles.subentryTitle}>{project.name}</h5>
+                      {project.period && (
+                        <p class={styles.period}>{project.period}</p>
+                      )}
+                    </div>
+                    {project.description && (
+                      <p class={styles.description}>{project.description}</p>
+                    )}
+                    {project.links && (
+                      <div class={styles.references}>
+                        <ResumeReferenceLinks links={project.links} />
+                      </div>
+                    )}
+                    <ul class={styles.bulletList}>
+                      {project.bullets.map((bullet) => (
+                        <li class={styles.bulletItem}>
+                          <span>{bullet.text}</span>
+                          {bullet.links && (
+                            <span class={styles.inlineReferences}>
+                              <ResumeReferenceLinks links={bullet.links} />
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+              </div>
+
+              {group.additionalLabel && group.additional && (
+                <section class={styles.additional}>
+                  <h5 class={styles.minorHeading}>{group.additionalLabel}</h5>
+                  <ul class={styles.bulletList}>
+                    {group.additional.map((bullet) => (
+                      <li class={styles.bulletItem}>
+                        <span>{bullet.text}</span>
+                        {bullet.links && (
+                          <span class={styles.inlineReferences}>
+                            <ResumeReferenceLinks links={bullet.links} />
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class={styles.section} aria-labelledby="public-work-heading">
+    <h2 class={styles.sectionLabel} id="public-work-heading">
+      {content.sectionLabels.publicWork}
+    </h2>
+    <div class={styles.activityList}>
+      {
+        content.publicWork.map((activity) => (
+          <section class={styles.activity}>
+            <div class={styles.subentryHeading}>
+              <h3 class={styles.subentryTitle}>
+                {activity.href ? (
+                  <a class={styles.titleLink} href={activity.href}>
+                    {activity.name}
+                  </a>
+                ) : (
+                  activity.name
+                )}
+              </h3>
+              <p class={styles.period}>{activity.period}</p>
+            </div>
+            <ul class={styles.bulletList}>
+              {activity.bullets.map((bullet) => (
+                <li class={styles.bulletItem}>
+                  <span>{bullet.text}</span>
+                  {bullet.links && (
+                    <span class={styles.inlineReferences}>
+                      <ResumeReferenceLinks links={bullet.links} />
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class={styles.section} aria-labelledby="education-heading">
+    <h2 class={styles.sectionLabel} id="education-heading">
+      {content.sectionLabels.education}
+    </h2>
+    <div class={styles.entryHeading}>
+      <div>
+        <h3 class={styles.entryTitle}>{content.education.school}</h3>
+        <p class={styles.entrySubtitle}>{content.education.degree}</p>
+      </div>
+      <p class={styles.period}>{content.education.period}</p>
+    </div>
+  </section>
+
+  <section class={styles.section} aria-labelledby="technologies-heading">
+    <h2 class={styles.sectionLabel} id="technologies-heading">
+      {content.sectionLabels.technologies}
+    </h2>
+    <p class={styles.factLine}>{content.technologies.join(" · ")}</p>
+  </section>
+
+  <section class={styles.section} aria-labelledby="languages-heading">
+    <h2 class={styles.sectionLabel} id="languages-heading">
+      {content.sectionLabels.languages}
+    </h2>
+    <ul class={styles.factList}>
+      {
+        content.languages.map((language) => (
+          <li class={styles.factLine}>{language}</li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class={styles.section} aria-labelledby="credentials-heading">
+    <h2 class={styles.sectionLabel} id="credentials-heading">
+      {content.sectionLabels.credentials}
+    </h2>
+    <ul class={styles.factList}>
+      {
+        content.credentials.map((credential) => (
+          <li class={styles.factLine}>{credential}</li>
+        ))
+      }
+    </ul>
+  </section>
+</article>
+
+<script>
+  document
+    .querySelector("[data-print-resume]")
+    ?.addEventListener("click", () => window.print());
+</script>

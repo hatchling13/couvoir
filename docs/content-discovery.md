@@ -69,9 +69,10 @@ before beginning the design phase.
 
 ## CV and resume
 
-The CV and resume are intentionally postponed until the rest of the website is
-settled. Their written content requires a dedicated, deliberate content phase;
-print-friendly presentation can be addressed afterward.
+The localized Me pages remain concise profile and contact surfaces. Their
+`/me/cv/` child routes contain the public, general-purpose résumé and a
+print-friendly presentation. Professional projects described in the CV are
+work experience; Munchkeen and Gluegun remain on Projects and are not repeated.
 
 ## Boundaries
 

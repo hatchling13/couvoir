@@ -1,6 +1,7 @@
 ---
 import { ProfileOverview } from "@widgets/profile-overview";
 import { SiteShell } from "@widgets/site-shell";
+import { getRelativeLocaleUrl } from "astro:i18n";
 ---
 
 <SiteShell title="me = f(cv)" description="Cogito, ergo sum - René Descartes">
@@ -8,5 +9,6 @@ import { SiteShell } from "@widgets/site-shell";
     name="Jung Wook Park"
     occupation="Software Engineer"
     contactsLabel="Contact"
+    cvHref={getRelativeLocaleUrl("en", "me/cv")}
   />
 </SiteShell>

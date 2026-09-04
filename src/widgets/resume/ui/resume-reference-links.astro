@@ -1,0 +1,17 @@
+---
+import { referenceLink } from "./resume.styles";
+
+interface Props {
+  links: readonly { label: string; href: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+{
+  links.map((link) => (
+    <a class={referenceLink} href={link.href}>
+      {link.label}
+    </a>
+  ))
+}

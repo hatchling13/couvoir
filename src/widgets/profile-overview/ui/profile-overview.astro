@@ -6,9 +6,10 @@ interface Props {
   name: string;
   occupation: string;
   contactsLabel: string;
+  cvHref: string;
 }
 
-const { name, occupation, contactsLabel } = Astro.props;
+const { name, occupation, contactsLabel, cvHref } = Astro.props;
 
 const contacts = [
   {
@@ -26,6 +27,11 @@ const contacts = [
     href: "https://bsky.app/profile/hatchling.dev",
     content: "@hatchling.dev",
   },
+  {
+    label: "Hackers' Pub",
+    href: "https://hackers.pub/@hatchling13",
+    content: "@hatchling13",
+  },
 ];
 ---
 
@@ -34,18 +40,24 @@ const contacts = [
     <h1 class={styles.name} id="profile-heading">{name}</h1>
     <p class={styles.role}>{occupation}</p>
   </header>
-  <address class={css({ fontStyle: "normal" })} aria-label={contactsLabel}>
-    <ul class={styles.contacts}>
-      {
-        contacts.map(({ label, href, content }) => (
-          <li class={styles.contact}>
-            <span class={styles.label}>{label.toLowerCase()}</span>
-            <a class={styles.link} href={href}>
-              {content}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </address>
+  <div class={styles.details}>
+    <address class={css({ fontStyle: "normal" })} aria-label={contactsLabel}>
+      <ul class={styles.contacts}>
+        {
+          contacts.map(({ label, href, content }) => (
+            <li class={styles.contact}>
+              <span class={styles.label}>{label.toLowerCase()}</span>
+              <a class={styles.link} href={href}>
+                {content}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </address>
+    <div class={styles.document}>
+      <span class={styles.label}>document</span>
+      <a class={styles.documentName} href={cvHref}>curriculum-vitae</a>
+    </div>
+  </div>
 </section>
