@@ -41,7 +41,9 @@ const content = resumeContent[locale];
     <h2 class={styles.sectionLabel} id="profile-heading">
       {content.sectionLabels.profile}
     </h2>
-    <p class={styles.summary}>{content.description}</p>
+    <div class={styles.sectionBody}>
+      <p class={styles.summary}>{content.description}</p>
+    </div>
   </section>
 
   <section class={styles.section} aria-labelledby="experience-heading">
@@ -132,37 +134,39 @@ const content = resumeContent[locale];
     <h2 class={styles.sectionLabel} id="public-work-heading">
       {content.sectionLabels.publicWork}
     </h2>
-    <div class={styles.activityList}>
-      {
-        content.publicWork.map((activity) => (
-          <section class={styles.activity}>
-            <div class={styles.subentryHeading}>
-              <h3 class={styles.subentryTitle}>
-                {activity.href ? (
-                  <a class={styles.titleLink} href={activity.href}>
-                    {activity.name}
-                  </a>
-                ) : (
-                  activity.name
-                )}
-              </h3>
-              <p class={styles.period}>{activity.period}</p>
-            </div>
-            <ul class={styles.bulletList}>
-              {activity.bullets.map((bullet) => (
-                <li class={styles.bulletItem}>
-                  <span>{bullet.text}</span>
-                  {bullet.links && (
-                    <span class={styles.inlineReferences}>
-                      <ResumeReferenceLinks links={bullet.links} />
-                    </span>
+    <div class={styles.sectionBody}>
+      <div class={styles.activityList}>
+        {
+          content.publicWork.map((activity) => (
+            <section class={styles.activity}>
+              <div class={styles.subentryHeading}>
+                <h3 class={styles.subentryTitle}>
+                  {activity.href ? (
+                    <a class={styles.titleLink} href={activity.href}>
+                      {activity.name}
+                    </a>
+                  ) : (
+                    activity.name
                   )}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      }
+                </h3>
+                <p class={styles.period}>{activity.period}</p>
+              </div>
+              <ul class={styles.bulletList}>
+                {activity.bullets.map((bullet) => (
+                  <li class={styles.bulletItem}>
+                    <span>{bullet.text}</span>
+                    {bullet.links && (
+                      <span class={styles.inlineReferences}>
+                        <ResumeReferenceLinks links={bullet.links} />
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -170,12 +174,14 @@ const content = resumeContent[locale];
     <h2 class={styles.sectionLabel} id="education-heading">
       {content.sectionLabels.education}
     </h2>
-    <div class={styles.entryHeading}>
-      <div>
-        <h3 class={styles.entryTitle}>{content.education.school}</h3>
-        <p class={styles.entrySubtitle}>{content.education.degree}</p>
+    <div class={styles.sectionBody}>
+      <div class={styles.entryHeading}>
+        <div>
+          <h3 class={styles.entryTitle}>{content.education.school}</h3>
+          <p class={styles.entrySubtitle}>{content.education.degree}</p>
+        </div>
+        <p class={styles.period}>{content.education.period}</p>
       </div>
-      <p class={styles.period}>{content.education.period}</p>
     </div>
   </section>
 
@@ -183,33 +189,39 @@ const content = resumeContent[locale];
     <h2 class={styles.sectionLabel} id="technologies-heading">
       {content.sectionLabels.technologies}
     </h2>
-    <p class={styles.factLine}>{content.technologies.join(" · ")}</p>
+    <div class={styles.sectionBody}>
+      <p class={styles.factLine}>{content.technologies.join(" · ")}</p>
+    </div>
   </section>
 
   <section class={styles.section} aria-labelledby="languages-heading">
     <h2 class={styles.sectionLabel} id="languages-heading">
       {content.sectionLabels.languages}
     </h2>
-    <ul class={styles.factList}>
-      {
-        content.languages.map((language) => (
-          <li class={styles.factLine}>{language}</li>
-        ))
-      }
-    </ul>
+    <div class={styles.sectionBody}>
+      <ul class={styles.factList}>
+        {
+          content.languages.map((language) => (
+            <li class={styles.factLine}>{language}</li>
+          ))
+        }
+      </ul>
+    </div>
   </section>
 
   <section class={styles.section} aria-labelledby="credentials-heading">
     <h2 class={styles.sectionLabel} id="credentials-heading">
       {content.sectionLabels.credentials}
     </h2>
-    <ul class={styles.factList}>
-      {
-        content.credentials.map((credential) => (
-          <li class={styles.factLine}>{credential}</li>
-        ))
-      }
-    </ul>
+    <div class={styles.sectionBody}>
+      <ul class={styles.factList}>
+        {
+          content.credentials.map((credential) => (
+            <li class={styles.factLine}>{credential}</li>
+          ))
+        }
+      </ul>
+    </div>
   </section>
 </article>
 

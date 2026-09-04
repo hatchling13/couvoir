@@ -111,9 +111,10 @@ export const section = css({
     rowGap: "5",
   },
   _print: {
-    gridTemplateColumns: "token(sizes.24) minmax(0, 1fr)",
+    position: "relative",
+    display: "block",
     paddingY: "5",
-    columnGap: "6",
+    breakInside: "auto",
   },
 });
 
@@ -126,9 +127,20 @@ export const sectionLabel = css({
   fontWeight: "normal",
   lineHeight: "relaxed",
   whiteSpace: "nowrap",
+  _print: {
+    position: "absolute",
+    top: "5",
+    left: "0",
+    width: "24",
+  },
 });
 
-export const sectionBody = css({ minWidth: "0" });
+export const sectionBody = css({
+  minWidth: "0",
+  _print: {
+    marginLeft: "calc(token(sizes.24) + token(spacing.6))",
+  },
+});
 
 export const summary = css({
   maxWidth: "prose",
@@ -181,6 +193,7 @@ export const workGroupList = css({
   display: "grid",
   marginTop: "9",
   rowGap: "8",
+  _print: { display: "block" },
 });
 
 export const workGroup = css({});
@@ -194,6 +207,7 @@ export const projectList = css({
   display: "grid",
   marginTop: "5",
   rowGap: "9",
+  _print: { display: "block" },
 });
 
 export const project = css({ breakInside: "avoid" });
@@ -298,9 +312,13 @@ export const minorHeading = css({
 export const activityList = css({
   display: "grid",
   rowGap: "8",
+  _print: { display: "block" },
 });
 
-export const activity = css({ breakInside: "avoid" });
+export const activity = css({
+  breakInside: "avoid",
+  _print: { marginBottom: "8" },
+});
 
 export const factList = css({
   display: "grid",

@@ -13,6 +13,7 @@ export const skipLink = css({
   fontSize: "sm",
   transform: "translateY(-160%)",
   _focus: { transform: "translateY(0)" },
+  _print: { display: "none" },
 });
 
 export const sitePage = css({
