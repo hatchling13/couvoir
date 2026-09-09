@@ -19,7 +19,27 @@ instance for each page. No Unhead runtime is sent to the browser.
   Open Graph also declares the URL, site name, locale, and page type.
 - Article routes pass their existing publication date and tags. No modification
   date is inferred from the build time.
-- Sharing images and image-card metadata are deferred until an image is chosen.
+- Open Graph images and Twitter large-image cards use a shared site image in
+  the page's language, including on articles. Article-specific artwork is not
+  generated yet.
+
+## Sharing images
+
+`src/pages/og/[locale].png.ts` generates `/og/ko.png` and `/og/en.png` during
+`astro build`. Takumi renders a 1200 × 630 monochrome image with the home
+navigation expression, existing localized home description, and site hostname.
+The renderer lives in `src/widgets/site-shell/model/sharing-image.ts`; shared
+dimensions, text, paths, and alt text live in `src/shared/config/sharing-image.ts`.
+
+Image rendering uses bundled font files under `src/shared/assets/og-fonts`
+(with source links and licenses), so it does not fetch fonts during builds.
+Build from the project root, as with the existing package scripts. The website's
+CSS font imports remain unchanged. Neither Takumi nor the bundled font sources
+are shipped to browsers; Cloudflare serves the generated PNGs as static assets.
+
+The fixed raster template uses pixel dimensions independently of the website's
+responsive Panda styles. Image metadata includes an absolute production URL,
+PNG type, dimensions, and localized alt text. Error pages remain excluded.
 
 ## Discovery and language variants
 

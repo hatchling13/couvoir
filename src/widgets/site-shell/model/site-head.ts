@@ -1,4 +1,5 @@
 import type { Locale } from "@shared/config/i18n";
+import { sharingImage, sharingImageAlt, sharingImagePath } from "@shared/config/sharing-image";
 import { useHead, useSeoMeta } from "unhead";
 import { createHead } from "unhead/server";
 
@@ -47,6 +48,14 @@ export const renderSiteHead = ({
           ogSiteName: "Couvoir",
           ogType: article ? "article" : "website",
           ogLocale: locale === "ko" ? "ko_KR" : "en_US",
+          ogImage: new URL(sharingImagePath(locale), site).href,
+          ogImageType: "image/png",
+          ogImageWidth: sharingImage.width,
+          ogImageHeight: sharingImage.height,
+          ogImageAlt: sharingImageAlt(locale),
+          twitterCard: "summary_large_image",
+          twitterImage: new URL(sharingImagePath(locale), site).href,
+          twitterImageAlt: sharingImageAlt(locale),
           twitterTitle: documentTitle,
           twitterDescription: summary,
           ...(article && {
