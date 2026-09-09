@@ -1,5 +1,8 @@
 ---
+import { getInterest, getInterestLanguage } from "@entities/interest";
+import type { Locale } from "@shared/config/i18n";
 import * as styles from "@shared/styles/expression";
+import { render } from "astro:content";
 
 interface ExpressionNode {
   label: string;
@@ -8,11 +11,12 @@ interface ExpressionNode {
 }
 
 interface Props {
+  locale: Locale;
   label: string;
   quoteLabel: string;
 }
 
-const { label, quoteLabel } = Astro.props;
+const { locale, label, quoteLabel } = Astro.props;
 
 const tree: ExpressionNode = {
   label: "interests",
@@ -35,6 +39,19 @@ const tree: ExpressionNode = {
     },
   ],
 };
+
+const getLeafLabels = (node: ExpressionNode): string[] =>
+  node.children ? node.children.flatMap(getLeafLabels) : [node.label];
+
+const quotes = await Promise.all(
+  getLeafLabels(tree).map(async (keyword) => {
+    const entry = await getInterest(keyword, locale);
+    if (!entry) return undefined;
+
+    const { Content } = await render(entry);
+    return { keyword, lang: getInterestLanguage(entry), Content };
+  }),
+);
 ---
 
 <couvoir-expression
@@ -43,6 +60,19 @@ const tree: ExpressionNode = {
   data-quote-label={quoteLabel}
   aria-label={label}
 >
+  {
+    quotes.map((quote) => {
+      if (!quote) return null;
+      const { Content } = quote;
+      return (
+        <template data-interest={quote.keyword} data-lang={quote.lang}>
+          <div class={styles.quoteContent}>
+            <Content />
+          </div>
+        </template>
+      );
+    })
+  }
   <div class={styles.stack} data-expression-stack aria-live="polite">
     <div class={styles.row}>
       <span class={styles.subject}>interests</span>
@@ -187,20 +217,25 @@ const tree: ExpressionNode = {
     private createLeaf(label: string, depth: number) {
       const leaf = document.createElement("section");
       const name = document.createElement("p");
-      const quote = document.createElement("blockquote");
-      const content = document.createElement("p");
       const entering = depth === this.enteringDepth;
 
       leaf.className = styles.leaf;
       name.className = cx(styles.leafName, entering && styles.reveal);
       name.textContent = label;
+      leaf.append(name);
+
+      const template = Array.from(
+        this.querySelectorAll<HTMLTemplateElement>("template[data-interest]"),
+      ).find((candidate) => candidate.dataset.interest === label);
+      if (!template) return leaf;
+
+      const quote = document.createElement("blockquote");
       quote.className = cx(styles.quote, entering && styles.revealQuote);
       quote.setAttribute("aria-label", this.dataset.quoteLabel ?? "Quote");
-      content.className = styles.quoteContent;
-      content.textContent = "…";
+      if (template.dataset.lang) quote.lang = template.dataset.lang;
 
-      quote.append(content);
-      leaf.append(name, quote);
+      quote.append(template.content.cloneNode(true));
+      leaf.append(quote);
       return leaf;
     }
 

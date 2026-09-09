@@ -79,7 +79,8 @@ export const argument = css({
 
 export const leaf = css({
   gridColumn: "1 / -1",
-  maxWidth: "prose",
+  width: "full",
+  minWidth: "0",
   marginTop: "2",
   _compact: { marginTop: "2.5" },
 });
@@ -89,7 +90,7 @@ export const leafName = css({
   marginX: "0",
   marginBottom: "5",
   color: "ink",
-  fontSize: "md",
+  fontSize: "xl",
   whiteSpace: "nowrap",
 });
 
@@ -110,6 +111,18 @@ export const quoteContent = css({
   color: "muted",
   fontSize: "lg",
   lineHeight: "relaxed",
+  overflowWrap: "anywhere",
+  "& > *": { margin: "0" },
+  "& > * + *": { marginTop: "4" },
+  "& ul, & ol": { paddingLeft: "6" },
+  "& ul": { listStyleType: "disc" },
+  "& ol": { listStyleType: "decimal" },
+  "& a": {
+    textDecoration: "underline",
+    textDecorationColor: "rule",
+    textUnderlineOffset: "token(spacing.1)",
+    _hover: { textDecorationColor: "ink" },
+  },
 });
 
 export const reveal = css({

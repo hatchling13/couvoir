@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { locales } from "@shared/config/i18n";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -52,7 +53,19 @@ const project = defineCollection({
   }),
 });
 
+const interest = defineCollection({
+  loader: glob({
+    base: "./content/interest",
+    pattern: "{ko,en}/*.md",
+  }),
+  schema: z.object({
+    draft: z.boolean().default(false),
+    lang: z.enum(locales).optional(),
+  }),
+});
+
 export const collections = {
+  interest,
   post,
   project,
   retrospect,
