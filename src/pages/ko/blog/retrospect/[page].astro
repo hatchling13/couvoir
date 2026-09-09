@@ -29,7 +29,10 @@ const { page } = Astro.props;
 const text = localeText[locale];
 ---
 
-<SiteShell title={text.retrospects} description="회고 목록.">
+<SiteShell
+  title={`blog = b(posts)(retrospects) — ${text.retrospects} · ${page.currentPage}`}
+  description="회고 목록."
+>
   <h1 class={visuallyHidden}>blog — retrospects</h1>
   <ArticleNavigation locale={locale} activeCollection="retrospect" />
   <div class={articleColumns({ single: true })}>

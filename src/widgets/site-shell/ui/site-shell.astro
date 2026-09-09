@@ -5,17 +5,28 @@ import SiteFooter from "./site-footer.astro";
 import SiteNavigation from "./site-navigation.astro";
 import { masthead, siteMain, sitePage, skipLink } from "./site-shell.styles";
 import "@shared/styles/global.css";
+import { renderSiteHead, type ArticleMetadata } from "../model/site-head";
 
 interface Props {
   title: string;
   description: string;
+  noindex?: boolean;
+  article?: ArticleMetadata;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex, article } = Astro.props;
 
-const siteName = "Couvoir";
-const documentTitle = title === siteName ? title : `${title} | ${siteName}`;
 const locale = getLocale(Astro.currentLocale);
+if (!Astro.site) throw new Error("Astro site URL is required for metadata.");
+const headTags = renderSiteHead({
+  title,
+  description,
+  site: Astro.site,
+  pathname: Astro.url.pathname,
+  locale,
+  noindex,
+  article,
+});
 const skipLabel = locale === "ko" ? "본문으로 건너뛰기" : "Skip to content";
 ---
 
@@ -24,7 +35,7 @@ const skipLabel = locale === "ko" ? "본문으로 건너뛰기" : "Skip to conte
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+    <Fragment set:html={headTags} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link
@@ -33,7 +44,7 @@ const skipLabel = locale === "ko" ? "본문으로 건너뛰기" : "Skip to conte
       title="Couvoir RSS"
       href={getRelativeLocaleUrl(locale, "rss.xml")}
     />
-    <title>{documentTitle}</title>
+    <slot name="head" />
   </head>
   <body>
     <a class={skipLink} href="#main-content">{skipLabel}</a>

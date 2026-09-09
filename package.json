@@ -20,12 +20,14 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.2",
     "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.2.2",
     "katex": "^0.18.4",
     "rehype-katex": "^7.0.1",
     "rehype-shift-heading": "^2.0.0",
     "remark-math": "^6.0.0",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.3",
+    "unhead": "^3.4.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

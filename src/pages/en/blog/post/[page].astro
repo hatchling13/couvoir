@@ -29,7 +29,10 @@ const { page } = Astro.props;
 const text = localeText[locale];
 ---
 
-<SiteShell title={text.posts} description="Post archive.">
+<SiteShell
+  title={`blog = b(posts)(retrospects) — ${text.posts} · ${page.currentPage}`}
+  description="Post archive."
+>
   <h1 class={visuallyHidden}>blog — posts</h1>
   <ArticleNavigation
     locale={locale}
